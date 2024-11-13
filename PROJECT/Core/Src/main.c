@@ -102,8 +102,9 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-
-  SCH_Add_Task(fsm_automatic_run_X(), 0, 100);
+  SCH_Add_Task(countdown(), 0, 1000);
+  SCH_Add_Task(fsm_automatic_run_X(), 0, 1000);
+  SCH_Add_Task(fsm_automatic_run_Y(), 0, 1000);
   while (1)
   {
 	  SCH_Dispatch_Tasks();
