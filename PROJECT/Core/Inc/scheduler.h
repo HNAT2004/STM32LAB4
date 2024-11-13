@@ -24,16 +24,20 @@ sTasks SCH_tasks_G[SCH_MAX_TASKS];
 
 void SCH_Init(void);
 
-void SCH_Add_Task(void (*pFunction)(), uint32_t DELAY, uint32_t PERIOD);
+unsigned char SCH_Add_Task (void (*pFunction)(), unsigned int Delay, unsigned int Period);
 
 void SCH_Update(void);
 
 void SCH_Dispatch_Tasks(void);
 
-void SCH_Delete_Task(uint TASK_INDEX);
+uint8_t SCH_Delete_Task(uint TASK_INDEX);
 
 void Watchdog_init(void);
 
 void Timer_init(void);
+
+void SCH_Go_To_Sleep(void);
+
+void SCH_Report_Status(void);
 
 #endif /* INC_SCHEDULER_H_ */
