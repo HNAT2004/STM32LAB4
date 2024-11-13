@@ -23,7 +23,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "scheduler.h"
-#include "fsm_automatic.h"
+#include "fsm.h"
+#include "button.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,7 +58,9 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void brightBlue(void){
+	HAL_GPIO_TogglePin(BLUE_GPIO_Port, BLUE_Pin);
+}
 /* USER CODE END 0 */
 
 /**
@@ -92,18 +95,21 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
 
-  HAL_GPIO_WritePin(BLUE_GPIO_Port, BLUE_Pin, SET);
-  HAL_GPIO_WritePin(RED_GPIO_Port, RED_Pin, SET);
-  HAL_GPIO_WritePin(YELLOW_GPIO_Port, YELLOW_Pin, SET);
-  HAL_GPIO_WritePin(GREEN_GPIO_Port, GREEN_Pin, SET);
+  HAL_GPIO_WritePin(BLUE_GPIO_Port, BLUE_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(RED_X_GPIO_Port, RED_X_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(YELLOW_X_GPIO_Port, YELLOW_X_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GREEN_X_GPIO_Port, GREEN_X_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(RED_Y_GPIO_Port, RED_Y_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(YELLOW_Y_GPIO_Port, YELLOW_Y_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GREEN_Y_GPIO_Port, GREEN_Y_Pin, GPIO_PIN_SET);
 
   //One-shot Tasks
   SCH_Add_Task(brightBlue, 2000, 0);
 
   //Periodic Tasks
-  SCH_Add_Task(initRed, 2000, 6000);
-  SCH_Add_Task(initYellow, 4000, 6000);
-  SCH_Add_Task(initGreen, 6000, 6000);
+  SCH_Add_Task(fsm_automatic_run_X, 2000, 10);
+  SCH_Add_Task(fsm_automatic_run_Y, 2000, 10);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -209,16 +215,26 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, RED_Pin|YELLOW_Pin|GREEN_Pin|BLUE_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, BLUE_Pin|RED_X_Pin|YELLOW_X_Pin|GREEN_X_Pin
+                          |RED_Y_Pin|YELLOW_Y_Pin|GREEN_Y_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : RED_Pin YELLOW_Pin GREEN_Pin BLUE_Pin */
-  GPIO_InitStruct.Pin = RED_Pin|YELLOW_Pin|GREEN_Pin|BLUE_Pin;
+  /*Configure GPIO pins : BLUE_Pin RED_X_Pin YELLOW_X_Pin GREEN_X_Pin
+                           RED_Y_Pin YELLOW_Y_Pin GREEN_Y_Pin */
+  GPIO_InitStruct.Pin = BLUE_Pin|RED_X_Pin|YELLOW_X_Pin|GREEN_X_Pin
+                          |RED_Y_Pin|YELLOW_Y_Pin|GREEN_Y_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : BUTTON_2_Pin BUTTON_1_Pin */
+  GPIO_InitStruct.Pin = BUTTON_2_Pin|BUTTON_1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
 
@@ -226,6 +242,8 @@ static void MX_GPIO_Init(void)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if(htim -> Instance == TIM2){
 		SCH_Update();
+		getKeyInput_1();
+		getKeyInput_2();
 	}
 }
 /* USER CODE END 4 */
