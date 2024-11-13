@@ -25,7 +25,7 @@ unsigned char Error_code_G = 0;
 
 void SCH_Init(void){
 	unsigned char i;
-	for (int i = 0; i < SCH_MAX_TASKS; i++){
+	for (i = 0; i < SCH_MAX_TASKS; i++){
 		SCH_Delete_Task(i);
 	}
 	Error_code_G = 0;
@@ -97,6 +97,18 @@ uint8_t SCH_Delete_Task(const uint32_t TASK_INDEX){
 	return Return_code;
 }
 
+void Watchdog_init(void){
+	//TODO
+}
+
+void Timer_init(void){
+	//TODO
+}
+
+void SCH_Go_To_Sleep(void){
+	//TODO
+}
+
 void SCH_Report_Status(void){
 #ifdef SCH_REPORT_ERRORS
 	if(Error_code_G != Last_error_code_G){
@@ -117,12 +129,4 @@ void SCH_Report_Status(void){
 		}
 	}
 #endif
-}
-
-void Watchdog_init(void){
-	//TODO
-}
-
-void Timer_init(void){
-	//TODO
 }

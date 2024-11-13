@@ -30,7 +30,7 @@ void SCH_Update(void);
 
 void SCH_Dispatch_Tasks(void);
 
-uint8_t SCH_Delete_Task(uint TASK_INDEX);
+uint8_t SCH_Delete_Task(uint32_t TASK_INDEX);
 
 void Watchdog_init(void);
 
