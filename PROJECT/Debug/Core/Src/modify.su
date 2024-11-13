@@ -1,0 +1,3 @@
+modify.c:10:6:modifyRedLED	16	static
+modify.c:24:6:modifyYellowLED	16	static
+modify.c:38:6:modifyGreenLED	16	static

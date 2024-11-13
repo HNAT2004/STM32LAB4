@@ -1,0 +1,7 @@
+software_timer.c:22:6:setTimer_Sweeper_X	16	static
+software_timer.c:27:6:setTimer_X	16	static
+software_timer.c:32:6:setTimer_Y	16	static
+software_timer.c:37:6:setTimer_Clock	16	static
+software_timer.c:42:6:setTimer_Sweeper_Y	16	static
+software_timer.c:47:6:setTimer	16	static
+software_timer.c:52:6:timer_run	4	static

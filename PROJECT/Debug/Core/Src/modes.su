@@ -1,0 +1,6 @@
+modes.c:21:6:mode_1	8	static
+modes.c:28:6:mode_2	8	static
+modes.c:42:6:mode_3	8	static
+modes.c:56:6:mode_4	8	static
+modes.c:70:6:change_mode	8	static
+modes.c:87:6:run_traffic_light	8	static
