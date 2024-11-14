@@ -104,11 +104,12 @@ int main(void)
   HAL_GPIO_WritePin(GREEN_Y_GPIO_Port, GREEN_Y_Pin, GPIO_PIN_SET);
 
   //One-shot Tasks
-  SCH_Add_Task(brightBlue, 2000, 0);
+  SCH_Add_Task(brightBlue, 200, 0);
 
   //Periodic Tasks
-  SCH_Add_Task(fsm_automatic_run_X, 2000, 10);
-  SCH_Add_Task(fsm_automatic_run_Y, 2000, 10);
+  SCH_Add_Task(fsm_automatic_run, 200, 1);
+  SCH_Add_Task(fsm_manual_run, 200, 1);
+
 
   /* USER CODE END 2 */
 
