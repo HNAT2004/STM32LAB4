@@ -107,8 +107,8 @@ int main(void)
   SCH_Add_Task(brightBlue, 200, 0);
 
   //Periodic Tasks
-  SCH_Add_Task(fsm_automatic_run, 200, 1);
-  SCH_Add_Task(fsm_manual_run, 200, 1);
+  SCH_Add_Task(fsm_automatic_run, 200, 10);
+  SCH_Add_Task(fsm_manual_run, 200, 10);
 
 
   /* USER CODE END 2 */

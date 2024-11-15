@@ -30,7 +30,7 @@ void fsm_automatic_run_X(void){
 		counter_X--;
 		if (counter_X <= 0){
 			status_X = AUTO_GREEN_X;
-			counter_X = 300;
+			counter_X = 300/2;
 		}
 		break;
 
@@ -41,7 +41,7 @@ void fsm_automatic_run_X(void){
 		counter_X--;
 		if (counter_X <= 0){
 			status_X = AUTO_RED_X;
-			counter_X = 500;
+			counter_X = 500/2;
 		}
 		break;
 
@@ -52,7 +52,7 @@ void fsm_automatic_run_X(void){
 		counter_X--;
 		if (counter_X <= 0){
 			status_X = AUTO_YELLOW_X;
-			counter_X = 200;
+			counter_X = 200/2;
 		}
 		break;
 
@@ -120,8 +120,8 @@ void fsm_automatic_run(void){
 		HAL_GPIO_WritePin(YELLOW_Y_GPIO_Port, YELLOW_Y_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(GREEN_Y_GPIO_Port, GREEN_Y_Pin, GPIO_PIN_SET);
 		status = AUTO_RED_X_GREEN_Y;
-		counter_X = 500;
-		counter_Y = 300;
+		counter_X = 500/2;
+		counter_Y = 300/2;
 		break;
 
 	case AUTO_RED_X_GREEN_Y:
@@ -140,7 +140,7 @@ void fsm_automatic_run(void){
 		}
 		if (counter_Y <= 0){
 			status = AUTO_RED_X_YELLOW_Y;
-			counter_Y = 200;
+			counter_Y = 200/2;
 		}
 		break;
 
@@ -160,8 +160,8 @@ void fsm_automatic_run(void){
 		}
 		if (counter_X <= 0 && counter_Y <= 0){
 			status = AUTO_GREEN_X_RED_Y;
-			counter_X = 300;
-			counter_Y = 500;
+			counter_X = 300/2;
+			counter_Y = 500/2;
 		}
 		break;
 
@@ -181,7 +181,7 @@ void fsm_automatic_run(void){
 		}
 		if (counter_X <= 0){
 			status = AUTO_YELLOW_X_RED_Y;
-			counter_X = 200;
+			counter_X = 200/2;
 		}
 		break;
 	case AUTO_YELLOW_X_RED_Y:
@@ -200,8 +200,8 @@ void fsm_automatic_run(void){
 		}
 		if (counter_X <= 0 && counter_Y <= 0){
 			status = AUTO_RED_X_GREEN_Y;
-			counter_X = 500;
-			counter_Y = 300;
+			counter_X = 500/2;
+			counter_Y = 300/2;
 		}
 		break;
 

@@ -118,7 +118,7 @@ Discarded input sections
  .data.status_Y
                 0x0000000000000000        0x4 ./Core/Src/fsm.o
  .text.fsm_automatic_run_X
-                0x0000000000000000      0x134 ./Core/Src/fsm.o
+                0x0000000000000000      0x12c ./Core/Src/fsm.o
  .text.fsm_automatic_run_Y
                 0x0000000000000000      0x140 ./Core/Src/fsm.o
  .debug_macro   0x0000000000000000      0xa9c ./Core/Src/fsm.o
@@ -2406,33 +2406,33 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000008000260       0x9c ./Core/Src/button.o
                 0x0000000008000260                getKeyInput_2
  .text.fsm_automatic_run
-                0x00000000080002fc      0x2d4 ./Core/Src/fsm.o
+                0x00000000080002fc      0x2c8 ./Core/Src/fsm.o
                 0x00000000080002fc                fsm_automatic_run
  .text.fsm_manual_run
-                0x00000000080005d0      0x290 ./Core/Src/fsm.o
-                0x00000000080005d0                fsm_manual_run
+                0x00000000080005c4      0x290 ./Core/Src/fsm.o
+                0x00000000080005c4                fsm_manual_run
  .text.brightBlue
-                0x0000000008000860       0x14 ./Core/Src/main.o
-                0x0000000008000860                brightBlue
- .text.main     0x0000000008000874       0x98 ./Core/Src/main.o
-                0x0000000008000874                main
+                0x0000000008000854       0x14 ./Core/Src/main.o
+                0x0000000008000854                brightBlue
+ .text.main     0x0000000008000868       0x98 ./Core/Src/main.o
+                0x0000000008000868                main
  .text.SystemClock_Config
-                0x000000000800090c       0x76 ./Core/Src/main.o
-                0x000000000800090c                SystemClock_Config
- *fill*         0x0000000008000982        0x2 
+                0x0000000008000900       0x76 ./Core/Src/main.o
+                0x0000000008000900                SystemClock_Config
+ *fill*         0x0000000008000976        0x2 
  .text.MX_TIM2_Init
-                0x0000000008000984       0x98 ./Core/Src/main.o
+                0x0000000008000978       0x98 ./Core/Src/main.o
  .text.MX_GPIO_Init
-                0x0000000008000a1c       0x98 ./Core/Src/main.o
+                0x0000000008000a10       0x98 ./Core/Src/main.o
  .text.HAL_TIM_PeriodElapsedCallback
-                0x0000000008000ab4       0x26 ./Core/Src/main.o
-                0x0000000008000ab4                HAL_TIM_PeriodElapsedCallback
+                0x0000000008000aa8       0x26 ./Core/Src/main.o
+                0x0000000008000aa8                HAL_TIM_PeriodElapsedCallback
  .text.Error_Handler
-                0x0000000008000ada        0xa ./Core/Src/main.o
-                0x0000000008000ada                Error_Handler
+                0x0000000008000ace        0xa ./Core/Src/main.o
+                0x0000000008000ace                Error_Handler
  .text.SCH_Add_Task
-                0x0000000008000ae4       0xa4 ./Core/Src/scheduler.o
-                0x0000000008000ae4                SCH_Add_Task
+                0x0000000008000ad8       0xb0 ./Core/Src/scheduler.o
+                0x0000000008000ad8                SCH_Add_Task
  .text.SCH_Update
                 0x0000000008000b88       0xdc ./Core/Src/scheduler.o
                 0x0000000008000b88                SCH_Update
@@ -3013,21 +3013,21 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_macro   0x000000000001643d      0x198 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o
  .debug_macro   0x00000000000165d5      0x197 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
 
-.debug_line     0x0000000000000000     0xa901
+.debug_line     0x0000000000000000     0xa903
  .debug_line    0x0000000000000000      0x776 ./Core/Src/button.o
- .debug_line    0x0000000000000776      0x91c ./Core/Src/fsm.o
- .debug_line    0x0000000000001092      0x7b8 ./Core/Src/main.o
- .debug_line    0x000000000000184a      0x530 ./Core/Src/scheduler.o
- .debug_line    0x0000000000001d7a      0x6a1 ./Core/Src/stm32f1xx_hal_msp.o
- .debug_line    0x000000000000241b      0x73f ./Core/Src/stm32f1xx_it.o
- .debug_line    0x0000000000002b5a      0x6e3 ./Core/Src/system_stm32f1xx.o
- .debug_line    0x000000000000323d       0x86 ./Core/Startup/startup_stm32f103c6ux.o
- .debug_line    0x00000000000032c3      0x910 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
- .debug_line    0x0000000000003bd3      0xaf8 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
- .debug_line    0x00000000000046cb      0x993 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
- .debug_line    0x000000000000505e      0xd1c ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
- .debug_line    0x0000000000005d7a     0x3361 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o
- .debug_line    0x00000000000090db     0x1826 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
+ .debug_line    0x0000000000000776      0x91b ./Core/Src/fsm.o
+ .debug_line    0x0000000000001091      0x7b8 ./Core/Src/main.o
+ .debug_line    0x0000000000001849      0x533 ./Core/Src/scheduler.o
+ .debug_line    0x0000000000001d7c      0x6a1 ./Core/Src/stm32f1xx_hal_msp.o
+ .debug_line    0x000000000000241d      0x73f ./Core/Src/stm32f1xx_it.o
+ .debug_line    0x0000000000002b5c      0x6e3 ./Core/Src/system_stm32f1xx.o
+ .debug_line    0x000000000000323f       0x86 ./Core/Startup/startup_stm32f103c6ux.o
+ .debug_line    0x00000000000032c5      0x910 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
+ .debug_line    0x0000000000003bd5      0xaf8 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
+ .debug_line    0x00000000000046cd      0x993 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
+ .debug_line    0x0000000000005060      0xd1c ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
+ .debug_line    0x0000000000005d7c     0x3361 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o
+ .debug_line    0x00000000000090dd     0x1826 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
 
 .debug_str      0x0000000000000000    0x8241d
  .debug_str     0x0000000000000000    0x7f6c7 ./Core/Src/button.o
