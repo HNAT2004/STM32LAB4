@@ -1,0 +1,9 @@
+fsm_setting.c:15:6:modifyRedLED	8	static
+fsm_setting.c:26:6:modifyYellowLED	8	static
+fsm_setting.c:37:6:modifyGreenLED	8	static
+fsm_setting.c:48:6:change_mode	8	static
+fsm_setting.c:57:6:mode_1	8	static
+fsm_setting.c:63:6:mode_2	8	static
+fsm_setting.c:69:6:mode_3	8	static
+fsm_setting.c:75:6:mode_4	8	static
+fsm_setting.c:81:6:change_clock_value	8	static

@@ -1,4 +1,5 @@
-Core/Src/fsm.o: ../Core/Src/fsm.c ../Core/Inc/fsm.h ../Core/Inc/main.h \
+Core/Src/display7SEG.o: ../Core/Src/display7SEG.c \
+ ../Core/Inc/display7SEG.h ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -23,10 +24,10 @@ Core/Src/fsm.o: ../Core/Src/fsm.c ../Core/Inc/fsm.h ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
- ../Core/Inc/button.h ../Core/Inc/global.h ../Core/Inc/fsm_setting.h \
- ../Core/Inc/display7SEG.h ../Core/Inc/fsm.h
+ ../Core/Inc/fsm.h ../Core/Inc/button.h ../Core/Inc/global.h \
+ ../Core/Inc/fsm_setting.h ../Core/Inc/display7SEG.h
 
-../Core/Inc/fsm.h:
+../Core/Inc/display7SEG.h:
 
 ../Core/Inc/main.h:
 
@@ -78,6 +79,8 @@ Core/Src/fsm.o: ../Core/Src/fsm.c ../Core/Inc/fsm.h ../Core/Inc/main.h \
 
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 
+../Core/Inc/fsm.h:
+
 ../Core/Inc/button.h:
 
 ../Core/Inc/global.h:
@@ -85,5 +88,3 @@ Core/Src/fsm.o: ../Core/Src/fsm.c ../Core/Inc/fsm.h ../Core/Inc/main.h \
 ../Core/Inc/fsm_setting.h:
 
 ../Core/Inc/display7SEG.h:
-
-../Core/Inc/fsm.h:

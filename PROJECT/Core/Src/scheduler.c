@@ -41,8 +41,8 @@ unsigned char SCH_Add_Task(void(*pFunction)() , unsigned int DELAY,unsigned int 
 		return SCH_MAX_TASKS;
 	}
 	SCH_tasks_G[Index].pTask = pFunction;
-	SCH_tasks_G[Index].Delay = DELAY;
-	SCH_tasks_G[Index].Period = PERIOD/10;
+	SCH_tasks_G[Index].Delay = DELAY / 10;
+	SCH_tasks_G[Index].Period = PERIOD / 10;
 	SCH_tasks_G[Index].RunMe = 0;
 	return Index;
 }

@@ -1,8 +1,7 @@
-display7SEG.c:15:6:display7SEG_X	16	static
-display7SEG.c:112:6:display7SEG_Y	16	static
-display7SEG.c:209:6:update7SEG_Y	16	static
-display7SEG.c:226:6:update7SEG_X	16	static
-display7SEG.c:243:6:update7SEG	16	static
-display7SEG.c:266:6:updateBuffer_X	16	static
-display7SEG.c:284:6:updateBuffer_Y	16	static
-display7SEG.c:302:6:updateBuffer	16	static
+display7SEG.c:13:6:init7SEG	8	static
+display7SEG.c:30:6:display7SEG_X	16	static
+display7SEG.c:127:6:display7SEG_Y	16	static
+display7SEG.c:224:6:update7SEG	16	static
+display7SEG.c:247:6:updateBufferOption	8	static
+display7SEG.c:256:6:updateBufferClock	8	static
+display7SEG.c:279:6:updateBufferMode	8	static
