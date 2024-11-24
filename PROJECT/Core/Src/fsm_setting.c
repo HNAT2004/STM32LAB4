@@ -11,6 +11,7 @@ int time_for_red = 5;
 int time_for_yellow = 2;
 int time_for_green = 3;
 int current_mode = 1;
+int not_save_flag = 0;
 
 void modifyRedLED(void){
 	if (current_mode == 2){
@@ -81,45 +82,60 @@ void mode_4(void){
 void change_clock_value(void){
 	switch(current_mode){
 	case 2:
+		not_save_flag = 0;
 		if (isButton2Pressed()){
+			not_save_flag = 1;
 			time_for_red++;
 			if (time_for_red > 99){
 				time_for_red = 1;
 			}
+			if (isButton1Pressed() && not_save_flag == 1){
+				time_for_red = save_red;
+			}
 		}
 		if (isButton3Pressed()){
+			not_save_flag = 0;
 			save_red = time_for_red;
 			save_green = save_red - save_yellow;
 		}
-		else{
-			time_for_red = save_red;
-		}
+		break;
+
 	case 3:
+		not_save_flag = 0;
 		if (isButton2Pressed()){
+			not_save_flag = 1;
 			time_for_yellow++;
 			if (time_for_yellow > 99){
 				time_for_yellow = 1;
 			}
-		}
-		if (isButton3Pressed()){
-			save_yellow = time_for_yellow;
-			save_red = save_green + save_yellow;
-		}else{
-			time_for_yellow = save_yellow;
-		}
-	case 4:
-		if (isButton2Pressed()){
-			time_for_green++;
-			if (time_for_green > 99){
-				time_for_green = 1;
+			if (isButton1Pressed() && not_save_flag == 1){
+				time_for_yellow = save_yellow;
 			}
 		}
 		if (isButton3Pressed()){
+			not_save_flag = 0;
+			save_yellow = time_for_yellow;
+			save_red = save_green + save_yellow;
+		}
+		break;
+
+	case 4:
+		not_save_flag = 0;
+		if (isButton2Pressed()){
+			time_for_green++;
+			not_save_flag = 1;
+			if (time_for_green > 99){
+				time_for_green = 1;
+			}
+			if (isButton1Pressed() && not_save_flag == 1){
+				time_for_green = save_green;
+			}
+		}
+		if (isButton3Pressed()){
+			not_save_flag = 0;
 			save_green = time_for_green;
 			save_red = save_green + save_yellow;
 		}
-		else{
-			time_for_green = save_green;
-		}
+		break;
 	}
 }
