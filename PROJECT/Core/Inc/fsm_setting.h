@@ -29,5 +29,6 @@ void mode_3(void);
 void mode_4(void);
 void change_mode(void);
 void change_clock_value(void);
+void check_save(void);
 
 #endif /* INC_FSM_SETTING_H_ */

@@ -304,7 +304,7 @@ void updateBufferMode(void){
 			led_buffer_Y[0] = 0;
 			led_buffer_Y[1] = time_for_green;
 		}
-		if (save_red >= 10){
+		if (time_for_red >= 10){
 			led_buffer_Y[0] = time_for_green / 10;
 			led_buffer_Y[1] = time_for_green % 10;
 		}

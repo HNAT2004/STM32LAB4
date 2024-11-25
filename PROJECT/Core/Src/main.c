@@ -110,17 +110,18 @@ int main(void)
   status = INIT;
 
   //One-shot Tasks
-  SCH_Add_Task(brightBlue, 2000, 0);
+  SCH_Add_Task(brightBlue, 1000, 0);
 
   //Periodic Tasks
-  SCH_Add_Task(mode_1, 2000, 10);
-  SCH_Add_Task(mode_2, 2000, 500);
-  SCH_Add_Task(mode_3, 2000, 500);
-  SCH_Add_Task(mode_4, 2000, 500);
-  SCH_Add_Task(countdown, 2000, 1000);
-  SCH_Add_Task(updateBufferOption, 2000, 250);
-  SCH_Add_Task(change_mode, 2000, 100);
-  SCH_Add_Task(change_clock_value, 2000, 10);
+  SCH_Add_Task(mode_1, 1000, 10);
+  SCH_Add_Task(mode_2, 1000, 500);
+  SCH_Add_Task(mode_3, 1000, 500);
+  SCH_Add_Task(mode_4, 1000, 500);
+  SCH_Add_Task(countdown, 1000, 1000);
+  SCH_Add_Task(updateBufferOption, 1000, 250);
+  SCH_Add_Task(change_mode, 1000, 100);
+  SCH_Add_Task(change_clock_value, 1000, 10);
+//  SCH_Add_Task(check_save, 1000, 10);
   /* USER CODE END 2 */
 
   /* Infinite loop */

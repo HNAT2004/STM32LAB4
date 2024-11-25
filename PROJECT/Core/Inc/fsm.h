@@ -18,9 +18,6 @@ extern int counter_Y;
 extern int counter_idle;
 extern int clock_X;
 extern int clock_Y;
-extern int save_red;
-extern int save_yellow;
-extern int save_green;
 
 void fsm_automatic_run(void);
 void fsm_manual_run(void);
