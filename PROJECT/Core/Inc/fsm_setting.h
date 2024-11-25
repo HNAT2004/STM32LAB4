@@ -18,7 +18,9 @@ extern int current_mode;
 extern int time_for_red;
 extern int time_for_yellow;
 extern int time_for_green;
-extern int not_save_flag;
+extern int not_save_flag_red;
+extern int not_save_flag_yellow;
+extern int not_save_flag_green;
 
 void modifyRedLED(void);
 void modifyYellowLED(void);

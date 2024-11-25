@@ -9,41 +9,41 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   2 .rodata       00000024  0800326c  0800326c  0001326c  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  08003290  08003290  00020058  2**0
+  3 .ARM.extab    00000000  08003290  08003290  00020064  2**0
                   CONTENTS
-  4 .ARM          00000000  08003290  08003290  00020058  2**0
+  4 .ARM          00000000  08003290  08003290  00020064  2**0
                   CONTENTS
-  5 .preinit_array 00000000  08003290  08003290  00020058  2**0
+  5 .preinit_array 00000000  08003290  08003290  00020064  2**0
                   CONTENTS, ALLOC, LOAD, DATA
   6 .init_array   00000004  08003290  08003290  00013290  2**2
                   CONTENTS, ALLOC, LOAD, DATA
   7 .fini_array   00000004  08003294  08003294  00013294  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         00000058  20000000  08003298  00020000  2**2
+  8 .data         00000064  20000000  08003298  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          000003d0  20000058  080032f0  00020058  2**2
+  9 .bss          000003cc  20000064  080032fc  00020064  2**2
                   ALLOC
- 10 ._user_heap_stack 00000600  20000428  080032f0  00020428  2**0
+ 10 ._user_heap_stack 00000600  20000430  080032fc  00020430  2**0
                   ALLOC
- 11 .ARM.attributes 00000029  00000000  00000000  00020058  2**0
+ 11 .ARM.attributes 00000029  00000000  00000000  00020064  2**0
                   CONTENTS, READONLY
- 12 .debug_info   000097d6  00000000  00000000  00020081  2**0
+ 12 .debug_info   00009852  00000000  00000000  0002008d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00001b8d  00000000  00000000  00029857  2**0
+ 13 .debug_abbrev 00001b8d  00000000  00000000  000298df  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00000af0  00000000  00000000  0002b3e8  2**3
+ 14 .debug_aranges 00000af0  00000000  00000000  0002b470  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 000009e0  00000000  00000000  0002bed8  2**3
+ 15 .debug_ranges 000009e0  00000000  00000000  0002bf60  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00016c81  00000000  00000000  0002c8b8  2**0
+ 16 .debug_macro  00016c81  00000000  00000000  0002c940  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000ba91  00000000  00000000  00043539  2**0
+ 17 .debug_line   0000ba8a  00000000  00000000  000435c1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00082966  00000000  00000000  0004efca  2**0
+ 18 .debug_str    00082993  00000000  00000000  0004f04b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000d1930  2**0
+ 19 .comment      00000053  00000000  00000000  000d19de  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00002abc  00000000  00000000  000d1984  2**2
+ 20 .debug_frame  00002abc  00000000  00000000  000d1a34  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -60,7 +60,7 @@ Disassembly of section .text:
  800011e:	2301      	movs	r3, #1
  8000120:	7023      	strb	r3, [r4, #0]
  8000122:	bd10      	pop	{r4, pc}
- 8000124:	20000058 	.word	0x20000058
+ 8000124:	20000064 	.word	0x20000064
  8000128:	00000000 	.word	0x00000000
  800012c:	08003254 	.word	0x08003254
 
@@ -73,7 +73,7 @@ Disassembly of section .text:
  800013a:	f3af 8000 	nop.w
  800013e:	bd08      	pop	{r3, pc}
  8000140:	00000000 	.word	0x00000000
- 8000144:	2000005c 	.word	0x2000005c
+ 8000144:	20000068 	.word	0x20000068
  8000148:	08003254 	.word	0x08003254
 
 0800014c <subKeyProcess_1>:
@@ -95,7 +95,7 @@ void subKeyProcess_1(void){
  800015a:	bc80      	pop	{r7}
  800015c:	4770      	bx	lr
  800015e:	bf00      	nop
- 8000160:	20000074 	.word	0x20000074
+ 8000160:	20000080 	.word	0x20000080
 
 08000164 <subKeyProcess_2>:
 
@@ -112,7 +112,7 @@ void subKeyProcess_2(void){
  8000172:	bc80      	pop	{r7}
  8000174:	4770      	bx	lr
  8000176:	bf00      	nop
- 8000178:	20000078 	.word	0x20000078
+ 8000178:	20000084 	.word	0x20000084
 
 0800017c <subKeyProcess_3>:
 
@@ -129,7 +129,7 @@ void subKeyProcess_3(void){
  800018a:	bc80      	pop	{r7}
  800018c:	4770      	bx	lr
  800018e:	bf00      	nop
- 8000190:	2000007c 	.word	0x2000007c
+ 8000190:	20000088 	.word	0x20000088
 
 08000194 <isButton1Pressed>:
 
@@ -156,7 +156,7 @@ int isButton1Pressed(void){
  80001ae:	46bd      	mov	sp, r7
  80001b0:	bc80      	pop	{r7}
  80001b2:	4770      	bx	lr
- 80001b4:	20000074 	.word	0x20000074
+ 80001b4:	20000080 	.word	0x20000080
 
 080001b8 <isButton2Pressed>:
 
@@ -183,7 +183,7 @@ int isButton2Pressed(void){
  80001d2:	46bd      	mov	sp, r7
  80001d4:	bc80      	pop	{r7}
  80001d6:	4770      	bx	lr
- 80001d8:	20000078 	.word	0x20000078
+ 80001d8:	20000084 	.word	0x20000084
 
 080001dc <isButton3Pressed>:
 
@@ -210,7 +210,7 @@ int isButton3Pressed(void){
  80001f6:	46bd      	mov	sp, r7
  80001f8:	bc80      	pop	{r7}
  80001fa:	4770      	bx	lr
- 80001fc:	2000007c 	.word	0x2000007c
+ 80001fc:	20000088 	.word	0x20000088
 
 08000200 <getKeyInput_1>:
 
@@ -1499,8 +1499,8 @@ void update7SEG(int index){
  8000bda:	bf00      	nop
  8000bdc:	40010800 	.word	0x40010800
  8000be0:	40010c00 	.word	0x40010c00
- 8000be4:	2000008c 	.word	0x2000008c
- 8000be8:	20000084 	.word	0x20000084
+ 8000be4:	20000098 	.word	0x20000098
+ 8000be8:	20000090 	.word	0x20000090
 
 08000bec <updateBufferOption>:
 
@@ -1652,12 +1652,12 @@ void updateBufferClock(void){
  8000cd6:	bf00      	nop
  8000cd8:	bd80      	pop	{r7, pc}
  8000cda:	bf00      	nop
- 8000cdc:	2000009c 	.word	0x2000009c
- 8000ce0:	20000084 	.word	0x20000084
+ 8000cdc:	200000a8 	.word	0x200000a8
+ 8000ce0:	20000090 	.word	0x20000090
  8000ce4:	66666667 	.word	0x66666667
- 8000ce8:	200000a0 	.word	0x200000a0
- 8000cec:	2000008c 	.word	0x2000008c
- 8000cf0:	20000080 	.word	0x20000080
+ 8000ce8:	200000ac 	.word	0x200000ac
+ 8000cec:	20000098 	.word	0x20000098
+ 8000cf0:	2000008c 	.word	0x2000008c
 
 08000cf4 <updateBufferMode>:
 
@@ -1850,14 +1850,14 @@ void updateBufferMode(void){
 }
  8000e2c:	bf00      	nop
  8000e2e:	bd80      	pop	{r7, pc}
- 8000e30:	20000084 	.word	0x20000084
+ 8000e30:	20000090 	.word	0x20000090
  8000e34:	20000048 	.word	0x20000048
  8000e38:	2000003c 	.word	0x2000003c
- 8000e3c:	2000008c 	.word	0x2000008c
+ 8000e3c:	20000098 	.word	0x20000098
  8000e40:	66666667 	.word	0x66666667
  8000e44:	20000040 	.word	0x20000040
  8000e48:	20000044 	.word	0x20000044
- 8000e4c:	20000080 	.word	0x20000080
+ 8000e4c:	2000008c 	.word	0x2000008c
 
 08000e50 <countdown>:
 int counter_Y = 0;
@@ -1885,8 +1885,8 @@ void countdown(void){
  8000e6a:	46bd      	mov	sp, r7
  8000e6c:	bc80      	pop	{r7}
  8000e6e:	4770      	bx	lr
- 8000e70:	2000009c 	.word	0x2000009c
- 8000e74:	200000a0 	.word	0x200000a0
+ 8000e70:	200000a8 	.word	0x200000a8
+ 8000e74:	200000ac 	.word	0x200000ac
 
 08000e78 <fsm_automatic_run>:
 
@@ -2277,14 +2277,14 @@ void fsm_automatic_run(void){
  800112e:	bf00      	nop
  8001130:	e019      	b.n	8001166 <fsm_automatic_run+0x2ee>
  8001132:	bf00      	nop
- 8001134:	200000b4 	.word	0x200000b4
+ 8001134:	200000bc 	.word	0x200000bc
  8001138:	40010800 	.word	0x40010800
  800113c:	2000003c 	.word	0x2000003c
- 8001140:	2000009c 	.word	0x2000009c
+ 8001140:	200000a8 	.word	0x200000a8
  8001144:	20000044 	.word	0x20000044
- 8001148:	200000a0 	.word	0x200000a0
- 800114c:	20000094 	.word	0x20000094
- 8001150:	20000098 	.word	0x20000098
+ 8001148:	200000ac 	.word	0x200000ac
+ 800114c:	200000a0 	.word	0x200000a0
+ 8001150:	200000a4 	.word	0x200000a4
  8001154:	20000040 	.word	0x20000040
 		break;
  8001158:	bf00      	nop
@@ -2304,10 +2304,10 @@ void fsm_automatic_run(void){
  800116a:	bf00      	nop
 
 0800116c <modifyRedLED>:
-int not_save_flag = 0;
-int save_value_red = 0;
-int save_value_yellow = 0;
-int save_value_green = 0;
+int not_save_flag_green = 0;
+int save_value_red = 5;
+int save_value_yellow = 2;
+int save_value_green = 3;
 
 void modifyRedLED(void){
  800116c:	b580      	push	{r7, lr}
@@ -2430,386 +2430,376 @@ void change_mode(void){
  800123c:	f7fe ffaa 	bl	8000194 <isButton1Pressed>
  8001240:	4603      	mov	r3, r0
  8001242:	2b00      	cmp	r3, #0
- 8001244:	d03a      	beq.n	80012bc <change_mode+0x84>
-		current_mode++;
- 8001246:	4b1e      	ldr	r3, [pc, #120]	; (80012c0 <change_mode+0x88>)
+ 8001244:	d02f      	beq.n	80012a6 <change_mode+0x6e>
+		if(current_mode == 2){
+ 8001246:	4b19      	ldr	r3, [pc, #100]	; (80012ac <change_mode+0x74>)
  8001248:	681b      	ldr	r3, [r3, #0]
- 800124a:	3301      	adds	r3, #1
- 800124c:	4a1c      	ldr	r2, [pc, #112]	; (80012c0 <change_mode+0x88>)
- 800124e:	6013      	str	r3, [r2, #0]
-		if (current_mode > 4){
- 8001250:	4b1b      	ldr	r3, [pc, #108]	; (80012c0 <change_mode+0x88>)
- 8001252:	681b      	ldr	r3, [r3, #0]
- 8001254:	2b04      	cmp	r3, #4
- 8001256:	dd02      	ble.n	800125e <change_mode+0x26>
-			current_mode = 1;
- 8001258:	4b19      	ldr	r3, [pc, #100]	; (80012c0 <change_mode+0x88>)
- 800125a:	2201      	movs	r2, #1
- 800125c:	601a      	str	r2, [r3, #0]
+ 800124a:	2b02      	cmp	r3, #2
+ 800124c:	d107      	bne.n	800125e <change_mode+0x26>
+			if (not_save_flag_red == 1){
+ 800124e:	4b18      	ldr	r3, [pc, #96]	; (80012b0 <change_mode+0x78>)
+ 8001250:	681b      	ldr	r3, [r3, #0]
+ 8001252:	2b01      	cmp	r3, #1
+ 8001254:	d103      	bne.n	800125e <change_mode+0x26>
+				time_for_red = save_value_red;
+ 8001256:	4b17      	ldr	r3, [pc, #92]	; (80012b4 <change_mode+0x7c>)
+ 8001258:	681b      	ldr	r3, [r3, #0]
+ 800125a:	4a17      	ldr	r2, [pc, #92]	; (80012b8 <change_mode+0x80>)
+ 800125c:	6013      	str	r3, [r2, #0]
+			}
 		}
-
-		if (current_mode == 3){
- 800125e:	4b18      	ldr	r3, [pc, #96]	; (80012c0 <change_mode+0x88>)
+		if(current_mode == 3){
+ 800125e:	4b13      	ldr	r3, [pc, #76]	; (80012ac <change_mode+0x74>)
  8001260:	681b      	ldr	r3, [r3, #0]
  8001262:	2b03      	cmp	r3, #3
- 8001264:	d10b      	bne.n	800127e <change_mode+0x46>
-			if (not_save_flag == 1){
- 8001266:	4b17      	ldr	r3, [pc, #92]	; (80012c4 <change_mode+0x8c>)
+ 8001264:	d107      	bne.n	8001276 <change_mode+0x3e>
+			if (not_save_flag_yellow == 1){
+ 8001266:	4b15      	ldr	r3, [pc, #84]	; (80012bc <change_mode+0x84>)
  8001268:	681b      	ldr	r3, [r3, #0]
  800126a:	2b01      	cmp	r3, #1
  800126c:	d103      	bne.n	8001276 <change_mode+0x3e>
-				time_for_red = save_value_red;
- 800126e:	4b16      	ldr	r3, [pc, #88]	; (80012c8 <change_mode+0x90>)
+				time_for_yellow = save_value_yellow;
+ 800126e:	4b14      	ldr	r3, [pc, #80]	; (80012c0 <change_mode+0x88>)
  8001270:	681b      	ldr	r3, [r3, #0]
- 8001272:	4a16      	ldr	r2, [pc, #88]	; (80012cc <change_mode+0x94>)
+ 8001272:	4a14      	ldr	r2, [pc, #80]	; (80012c4 <change_mode+0x8c>)
  8001274:	6013      	str	r3, [r2, #0]
 			}
-			not_save_flag = 0;
- 8001276:	4b13      	ldr	r3, [pc, #76]	; (80012c4 <change_mode+0x8c>)
- 8001278:	2200      	movs	r2, #0
- 800127a:	601a      	str	r2, [r3, #0]
+		}
+		if(current_mode == 4){
+ 8001276:	4b0d      	ldr	r3, [pc, #52]	; (80012ac <change_mode+0x74>)
+ 8001278:	681b      	ldr	r3, [r3, #0]
+ 800127a:	2b04      	cmp	r3, #4
+ 800127c:	d107      	bne.n	800128e <change_mode+0x56>
+			if (not_save_flag_green == 1){
+ 800127e:	4b12      	ldr	r3, [pc, #72]	; (80012c8 <change_mode+0x90>)
+ 8001280:	681b      	ldr	r3, [r3, #0]
+ 8001282:	2b01      	cmp	r3, #1
+ 8001284:	d103      	bne.n	800128e <change_mode+0x56>
 				time_for_green = save_value_green;
+ 8001286:	4b11      	ldr	r3, [pc, #68]	; (80012cc <change_mode+0x94>)
+ 8001288:	681b      	ldr	r3, [r3, #0]
+ 800128a:	4a11      	ldr	r2, [pc, #68]	; (80012d0 <change_mode+0x98>)
+ 800128c:	6013      	str	r3, [r2, #0]
 			}
-			not_save_flag = 0;
+		}
+		current_mode++;
+ 800128e:	4b07      	ldr	r3, [pc, #28]	; (80012ac <change_mode+0x74>)
+ 8001290:	681b      	ldr	r3, [r3, #0]
+ 8001292:	3301      	adds	r3, #1
+ 8001294:	4a05      	ldr	r2, [pc, #20]	; (80012ac <change_mode+0x74>)
+ 8001296:	6013      	str	r3, [r2, #0]
+		if (current_mode > 4){
+ 8001298:	4b04      	ldr	r3, [pc, #16]	; (80012ac <change_mode+0x74>)
+ 800129a:	681b      	ldr	r3, [r3, #0]
+ 800129c:	2b04      	cmp	r3, #4
+ 800129e:	dd02      	ble.n	80012a6 <change_mode+0x6e>
+			current_mode = 1;
+ 80012a0:	4b02      	ldr	r3, [pc, #8]	; (80012ac <change_mode+0x74>)
+ 80012a2:	2201      	movs	r2, #1
+ 80012a4:	601a      	str	r2, [r3, #0]
 		}
 	}
 }
- 800127c:	e01e      	b.n	80012bc <change_mode+0x84>
-		}else if (current_mode == 4){
- 800127e:	4b10      	ldr	r3, [pc, #64]	; (80012c0 <change_mode+0x88>)
- 8001280:	681b      	ldr	r3, [r3, #0]
- 8001282:	2b04      	cmp	r3, #4
- 8001284:	d10b      	bne.n	800129e <change_mode+0x66>
-			if (not_save_flag == 1){
- 8001286:	4b0f      	ldr	r3, [pc, #60]	; (80012c4 <change_mode+0x8c>)
- 8001288:	681b      	ldr	r3, [r3, #0]
- 800128a:	2b01      	cmp	r3, #1
- 800128c:	d103      	bne.n	8001296 <change_mode+0x5e>
-				time_for_yellow = save_value_yellow;
- 800128e:	4b10      	ldr	r3, [pc, #64]	; (80012d0 <change_mode+0x98>)
- 8001290:	681b      	ldr	r3, [r3, #0]
- 8001292:	4a10      	ldr	r2, [pc, #64]	; (80012d4 <change_mode+0x9c>)
- 8001294:	6013      	str	r3, [r2, #0]
-			not_save_flag = 0;
- 8001296:	4b0b      	ldr	r3, [pc, #44]	; (80012c4 <change_mode+0x8c>)
- 8001298:	2200      	movs	r2, #0
- 800129a:	601a      	str	r2, [r3, #0]
-}
- 800129c:	e00e      	b.n	80012bc <change_mode+0x84>
-		}else if (current_mode == 1){
- 800129e:	4b08      	ldr	r3, [pc, #32]	; (80012c0 <change_mode+0x88>)
- 80012a0:	681b      	ldr	r3, [r3, #0]
- 80012a2:	2b01      	cmp	r3, #1
- 80012a4:	d10a      	bne.n	80012bc <change_mode+0x84>
-			if (not_save_flag == 1){
- 80012a6:	4b07      	ldr	r3, [pc, #28]	; (80012c4 <change_mode+0x8c>)
- 80012a8:	681b      	ldr	r3, [r3, #0]
- 80012aa:	2b01      	cmp	r3, #1
- 80012ac:	d103      	bne.n	80012b6 <change_mode+0x7e>
-				time_for_green = save_value_green;
- 80012ae:	4b0a      	ldr	r3, [pc, #40]	; (80012d8 <change_mode+0xa0>)
- 80012b0:	681b      	ldr	r3, [r3, #0]
- 80012b2:	4a0a      	ldr	r2, [pc, #40]	; (80012dc <change_mode+0xa4>)
- 80012b4:	6013      	str	r3, [r2, #0]
-			not_save_flag = 0;
- 80012b6:	4b03      	ldr	r3, [pc, #12]	; (80012c4 <change_mode+0x8c>)
- 80012b8:	2200      	movs	r2, #0
- 80012ba:	601a      	str	r2, [r3, #0]
-}
- 80012bc:	bf00      	nop
- 80012be:	bd80      	pop	{r7, pc}
- 80012c0:	20000048 	.word	0x20000048
- 80012c4:	200000a4 	.word	0x200000a4
- 80012c8:	200000a8 	.word	0x200000a8
- 80012cc:	2000003c 	.word	0x2000003c
- 80012d0:	200000ac 	.word	0x200000ac
- 80012d4:	20000040 	.word	0x20000040
- 80012d8:	200000b0 	.word	0x200000b0
- 80012dc:	20000044 	.word	0x20000044
+ 80012a6:	bf00      	nop
+ 80012a8:	bd80      	pop	{r7, pc}
+ 80012aa:	bf00      	nop
+ 80012ac:	20000048 	.word	0x20000048
+ 80012b0:	200000b0 	.word	0x200000b0
+ 80012b4:	2000004c 	.word	0x2000004c
+ 80012b8:	2000003c 	.word	0x2000003c
+ 80012bc:	200000b4 	.word	0x200000b4
+ 80012c0:	20000050 	.word	0x20000050
+ 80012c4:	20000040 	.word	0x20000040
+ 80012c8:	200000b8 	.word	0x200000b8
+ 80012cc:	20000054 	.word	0x20000054
+ 80012d0:	20000044 	.word	0x20000044
 
-080012e0 <mode_1>:
+080012d4 <mode_1>:
 
 void mode_1(void){
- 80012e0:	b580      	push	{r7, lr}
- 80012e2:	af00      	add	r7, sp, #0
+ 80012d4:	b580      	push	{r7, lr}
+ 80012d6:	af00      	add	r7, sp, #0
 	if (current_mode == 1){
- 80012e4:	4b03      	ldr	r3, [pc, #12]	; (80012f4 <mode_1+0x14>)
- 80012e6:	681b      	ldr	r3, [r3, #0]
- 80012e8:	2b01      	cmp	r3, #1
- 80012ea:	d101      	bne.n	80012f0 <mode_1+0x10>
+ 80012d8:	4b03      	ldr	r3, [pc, #12]	; (80012e8 <mode_1+0x14>)
+ 80012da:	681b      	ldr	r3, [r3, #0]
+ 80012dc:	2b01      	cmp	r3, #1
+ 80012de:	d101      	bne.n	80012e4 <mode_1+0x10>
 		fsm_automatic_run();
- 80012ec:	f7ff fdc4 	bl	8000e78 <fsm_automatic_run>
+ 80012e0:	f7ff fdca 	bl	8000e78 <fsm_automatic_run>
 	}
 }
- 80012f0:	bf00      	nop
- 80012f2:	bd80      	pop	{r7, pc}
- 80012f4:	20000048 	.word	0x20000048
+ 80012e4:	bf00      	nop
+ 80012e6:	bd80      	pop	{r7, pc}
+ 80012e8:	20000048 	.word	0x20000048
 
-080012f8 <mode_2>:
+080012ec <mode_2>:
 
 void mode_2(void){
- 80012f8:	b580      	push	{r7, lr}
- 80012fa:	af00      	add	r7, sp, #0
+ 80012ec:	b580      	push	{r7, lr}
+ 80012ee:	af00      	add	r7, sp, #0
 	if (current_mode == 2){
- 80012fc:	4b03      	ldr	r3, [pc, #12]	; (800130c <mode_2+0x14>)
- 80012fe:	681b      	ldr	r3, [r3, #0]
- 8001300:	2b02      	cmp	r3, #2
- 8001302:	d101      	bne.n	8001308 <mode_2+0x10>
+ 80012f0:	4b03      	ldr	r3, [pc, #12]	; (8001300 <mode_2+0x14>)
+ 80012f2:	681b      	ldr	r3, [r3, #0]
+ 80012f4:	2b02      	cmp	r3, #2
+ 80012f6:	d101      	bne.n	80012fc <mode_2+0x10>
 		modifyRedLED();
- 8001304:	f7ff ff32 	bl	800116c <modifyRedLED>
+ 80012f8:	f7ff ff38 	bl	800116c <modifyRedLED>
 	}
 }
- 8001308:	bf00      	nop
- 800130a:	bd80      	pop	{r7, pc}
- 800130c:	20000048 	.word	0x20000048
+ 80012fc:	bf00      	nop
+ 80012fe:	bd80      	pop	{r7, pc}
+ 8001300:	20000048 	.word	0x20000048
 
-08001310 <mode_3>:
+08001304 <mode_3>:
 
 void mode_3(void){
- 8001310:	b580      	push	{r7, lr}
- 8001312:	af00      	add	r7, sp, #0
+ 8001304:	b580      	push	{r7, lr}
+ 8001306:	af00      	add	r7, sp, #0
 	if (current_mode == 3){
- 8001314:	4b03      	ldr	r3, [pc, #12]	; (8001324 <mode_3+0x14>)
- 8001316:	681b      	ldr	r3, [r3, #0]
- 8001318:	2b03      	cmp	r3, #3
- 800131a:	d101      	bne.n	8001320 <mode_3+0x10>
+ 8001308:	4b03      	ldr	r3, [pc, #12]	; (8001318 <mode_3+0x14>)
+ 800130a:	681b      	ldr	r3, [r3, #0]
+ 800130c:	2b03      	cmp	r3, #3
+ 800130e:	d101      	bne.n	8001314 <mode_3+0x10>
 		modifyYellowLED();
- 800131c:	f7ff ff48 	bl	80011b0 <modifyYellowLED>
+ 8001310:	f7ff ff4e 	bl	80011b0 <modifyYellowLED>
 	}
 }
- 8001320:	bf00      	nop
- 8001322:	bd80      	pop	{r7, pc}
- 8001324:	20000048 	.word	0x20000048
+ 8001314:	bf00      	nop
+ 8001316:	bd80      	pop	{r7, pc}
+ 8001318:	20000048 	.word	0x20000048
 
-08001328 <mode_4>:
+0800131c <mode_4>:
 
 void mode_4(void){
- 8001328:	b580      	push	{r7, lr}
- 800132a:	af00      	add	r7, sp, #0
+ 800131c:	b580      	push	{r7, lr}
+ 800131e:	af00      	add	r7, sp, #0
 	if (current_mode == 4){
- 800132c:	4b03      	ldr	r3, [pc, #12]	; (800133c <mode_4+0x14>)
- 800132e:	681b      	ldr	r3, [r3, #0]
- 8001330:	2b04      	cmp	r3, #4
- 8001332:	d101      	bne.n	8001338 <mode_4+0x10>
+ 8001320:	4b03      	ldr	r3, [pc, #12]	; (8001330 <mode_4+0x14>)
+ 8001322:	681b      	ldr	r3, [r3, #0]
+ 8001324:	2b04      	cmp	r3, #4
+ 8001326:	d101      	bne.n	800132c <mode_4+0x10>
 		modifyGreenLED();
- 8001334:	f7ff ff5e 	bl	80011f4 <modifyGreenLED>
+ 8001328:	f7ff ff64 	bl	80011f4 <modifyGreenLED>
 	}
 }
- 8001338:	bf00      	nop
- 800133a:	bd80      	pop	{r7, pc}
- 800133c:	20000048 	.word	0x20000048
+ 800132c:	bf00      	nop
+ 800132e:	bd80      	pop	{r7, pc}
+ 8001330:	20000048 	.word	0x20000048
 
-08001340 <change_clock_value>:
+08001334 <change_clock_value>:
 
 void change_clock_value(void){
- 8001340:	b580      	push	{r7, lr}
- 8001342:	af00      	add	r7, sp, #0
+ 8001334:	b580      	push	{r7, lr}
+ 8001336:	af00      	add	r7, sp, #0
 	switch(current_mode){
- 8001344:	4b4e      	ldr	r3, [pc, #312]	; (8001480 <change_clock_value+0x140>)
- 8001346:	681b      	ldr	r3, [r3, #0]
- 8001348:	2b04      	cmp	r3, #4
- 800134a:	d063      	beq.n	8001414 <change_clock_value+0xd4>
- 800134c:	2b04      	cmp	r3, #4
- 800134e:	f300 8094 	bgt.w	800147a <change_clock_value+0x13a>
- 8001352:	2b02      	cmp	r3, #2
- 8001354:	d002      	beq.n	800135c <change_clock_value+0x1c>
- 8001356:	2b03      	cmp	r3, #3
- 8001358:	d02e      	beq.n	80013b8 <change_clock_value+0x78>
-			save_value_green = 0;
+ 8001338:	4b4f      	ldr	r3, [pc, #316]	; (8001478 <change_clock_value+0x144>)
+ 800133a:	681b      	ldr	r3, [r3, #0]
+ 800133c:	2b04      	cmp	r3, #4
+ 800133e:	d063      	beq.n	8001408 <change_clock_value+0xd4>
+ 8001340:	2b04      	cmp	r3, #4
+ 8001342:	f300 8096 	bgt.w	8001472 <change_clock_value+0x13e>
+ 8001346:	2b02      	cmp	r3, #2
+ 8001348:	d002      	beq.n	8001350 <change_clock_value+0x1c>
+ 800134a:	2b03      	cmp	r3, #3
+ 800134c:	d02c      	beq.n	80013a8 <change_clock_value+0x74>
+			save_value_green = time_for_green;
 			time_for_red = time_for_green + time_for_yellow;
 		}
 		break;
 	}
 }
- 800135a:	e08e      	b.n	800147a <change_clock_value+0x13a>
-		not_save_flag = 0;
- 800135c:	4b49      	ldr	r3, [pc, #292]	; (8001484 <change_clock_value+0x144>)
- 800135e:	2200      	movs	r2, #0
- 8001360:	601a      	str	r2, [r3, #0]
-		save_value_red = time_for_red;
- 8001362:	4b49      	ldr	r3, [pc, #292]	; (8001488 <change_clock_value+0x148>)
- 8001364:	681b      	ldr	r3, [r3, #0]
- 8001366:	4a49      	ldr	r2, [pc, #292]	; (800148c <change_clock_value+0x14c>)
- 8001368:	6013      	str	r3, [r2, #0]
+ 800134e:	e090      	b.n	8001472 <change_clock_value+0x13e>
 		if (isButton2Pressed()){
- 800136a:	f7fe ff25 	bl	80001b8 <isButton2Pressed>
- 800136e:	4603      	mov	r3, r0
- 8001370:	2b00      	cmp	r3, #0
- 8001372:	d00e      	beq.n	8001392 <change_clock_value+0x52>
-			not_save_flag = 1;
- 8001374:	4b43      	ldr	r3, [pc, #268]	; (8001484 <change_clock_value+0x144>)
- 8001376:	2201      	movs	r2, #1
- 8001378:	601a      	str	r2, [r3, #0]
+ 8001350:	f7fe ff32 	bl	80001b8 <isButton2Pressed>
+ 8001354:	4603      	mov	r3, r0
+ 8001356:	2b00      	cmp	r3, #0
+ 8001358:	d012      	beq.n	8001380 <change_clock_value+0x4c>
+			if (not_save_flag_red == 0){
+ 800135a:	4b48      	ldr	r3, [pc, #288]	; (800147c <change_clock_value+0x148>)
+ 800135c:	681b      	ldr	r3, [r3, #0]
+ 800135e:	2b00      	cmp	r3, #0
+ 8001360:	d102      	bne.n	8001368 <change_clock_value+0x34>
+				not_save_flag_red = 1;
+ 8001362:	4b46      	ldr	r3, [pc, #280]	; (800147c <change_clock_value+0x148>)
+ 8001364:	2201      	movs	r2, #1
+ 8001366:	601a      	str	r2, [r3, #0]
 			time_for_red++;
- 800137a:	4b43      	ldr	r3, [pc, #268]	; (8001488 <change_clock_value+0x148>)
- 800137c:	681b      	ldr	r3, [r3, #0]
- 800137e:	3301      	adds	r3, #1
- 8001380:	4a41      	ldr	r2, [pc, #260]	; (8001488 <change_clock_value+0x148>)
- 8001382:	6013      	str	r3, [r2, #0]
+ 8001368:	4b45      	ldr	r3, [pc, #276]	; (8001480 <change_clock_value+0x14c>)
+ 800136a:	681b      	ldr	r3, [r3, #0]
+ 800136c:	3301      	adds	r3, #1
+ 800136e:	4a44      	ldr	r2, [pc, #272]	; (8001480 <change_clock_value+0x14c>)
+ 8001370:	6013      	str	r3, [r2, #0]
 			if (time_for_red > 99){
- 8001384:	4b40      	ldr	r3, [pc, #256]	; (8001488 <change_clock_value+0x148>)
- 8001386:	681b      	ldr	r3, [r3, #0]
- 8001388:	2b63      	cmp	r3, #99	; 0x63
- 800138a:	dd02      	ble.n	8001392 <change_clock_value+0x52>
+ 8001372:	4b43      	ldr	r3, [pc, #268]	; (8001480 <change_clock_value+0x14c>)
+ 8001374:	681b      	ldr	r3, [r3, #0]
+ 8001376:	2b63      	cmp	r3, #99	; 0x63
+ 8001378:	dd02      	ble.n	8001380 <change_clock_value+0x4c>
 				time_for_red = 1;
- 800138c:	4b3e      	ldr	r3, [pc, #248]	; (8001488 <change_clock_value+0x148>)
- 800138e:	2201      	movs	r2, #1
- 8001390:	601a      	str	r2, [r3, #0]
+ 800137a:	4b41      	ldr	r3, [pc, #260]	; (8001480 <change_clock_value+0x14c>)
+ 800137c:	2201      	movs	r2, #1
+ 800137e:	601a      	str	r2, [r3, #0]
 		if (isButton3Pressed()){
- 8001392:	f7fe ff23 	bl	80001dc <isButton3Pressed>
- 8001396:	4603      	mov	r3, r0
- 8001398:	2b00      	cmp	r3, #0
- 800139a:	d069      	beq.n	8001470 <change_clock_value+0x130>
-			not_save_flag = 0;
- 800139c:	4b39      	ldr	r3, [pc, #228]	; (8001484 <change_clock_value+0x144>)
- 800139e:	2200      	movs	r2, #0
- 80013a0:	601a      	str	r2, [r3, #0]
-			save_value_red = 0;
- 80013a2:	4b3a      	ldr	r3, [pc, #232]	; (800148c <change_clock_value+0x14c>)
- 80013a4:	2200      	movs	r2, #0
- 80013a6:	601a      	str	r2, [r3, #0]
+ 8001380:	f7fe ff2c 	bl	80001dc <isButton3Pressed>
+ 8001384:	4603      	mov	r3, r0
+ 8001386:	2b00      	cmp	r3, #0
+ 8001388:	d06e      	beq.n	8001468 <change_clock_value+0x134>
+			not_save_flag_red = 0;
+ 800138a:	4b3c      	ldr	r3, [pc, #240]	; (800147c <change_clock_value+0x148>)
+ 800138c:	2200      	movs	r2, #0
+ 800138e:	601a      	str	r2, [r3, #0]
+			save_value_red = time_for_red;
+ 8001390:	4b3b      	ldr	r3, [pc, #236]	; (8001480 <change_clock_value+0x14c>)
+ 8001392:	681b      	ldr	r3, [r3, #0]
+ 8001394:	4a3b      	ldr	r2, [pc, #236]	; (8001484 <change_clock_value+0x150>)
+ 8001396:	6013      	str	r3, [r2, #0]
 			time_for_green = time_for_red - time_for_yellow;
- 80013a8:	4b37      	ldr	r3, [pc, #220]	; (8001488 <change_clock_value+0x148>)
- 80013aa:	681a      	ldr	r2, [r3, #0]
- 80013ac:	4b38      	ldr	r3, [pc, #224]	; (8001490 <change_clock_value+0x150>)
- 80013ae:	681b      	ldr	r3, [r3, #0]
- 80013b0:	1ad3      	subs	r3, r2, r3
- 80013b2:	4a38      	ldr	r2, [pc, #224]	; (8001494 <change_clock_value+0x154>)
- 80013b4:	6013      	str	r3, [r2, #0]
+ 8001398:	4b39      	ldr	r3, [pc, #228]	; (8001480 <change_clock_value+0x14c>)
+ 800139a:	681a      	ldr	r2, [r3, #0]
+ 800139c:	4b3a      	ldr	r3, [pc, #232]	; (8001488 <change_clock_value+0x154>)
+ 800139e:	681b      	ldr	r3, [r3, #0]
+ 80013a0:	1ad3      	subs	r3, r2, r3
+ 80013a2:	4a3a      	ldr	r2, [pc, #232]	; (800148c <change_clock_value+0x158>)
+ 80013a4:	6013      	str	r3, [r2, #0]
 		break;
- 80013b6:	e05b      	b.n	8001470 <change_clock_value+0x130>
-		not_save_flag = 0;
- 80013b8:	4b32      	ldr	r3, [pc, #200]	; (8001484 <change_clock_value+0x144>)
- 80013ba:	2200      	movs	r2, #0
- 80013bc:	601a      	str	r2, [r3, #0]
-		save_value_yellow = time_for_yellow;
- 80013be:	4b34      	ldr	r3, [pc, #208]	; (8001490 <change_clock_value+0x150>)
- 80013c0:	681b      	ldr	r3, [r3, #0]
- 80013c2:	4a35      	ldr	r2, [pc, #212]	; (8001498 <change_clock_value+0x158>)
- 80013c4:	6013      	str	r3, [r2, #0]
+ 80013a6:	e05f      	b.n	8001468 <change_clock_value+0x134>
 		if (isButton2Pressed()){
- 80013c6:	f7fe fef7 	bl	80001b8 <isButton2Pressed>
- 80013ca:	4603      	mov	r3, r0
- 80013cc:	2b00      	cmp	r3, #0
- 80013ce:	d00e      	beq.n	80013ee <change_clock_value+0xae>
-			not_save_flag = 1;
- 80013d0:	4b2c      	ldr	r3, [pc, #176]	; (8001484 <change_clock_value+0x144>)
- 80013d2:	2201      	movs	r2, #1
- 80013d4:	601a      	str	r2, [r3, #0]
+ 80013a8:	f7fe ff06 	bl	80001b8 <isButton2Pressed>
+ 80013ac:	4603      	mov	r3, r0
+ 80013ae:	2b00      	cmp	r3, #0
+ 80013b0:	d016      	beq.n	80013e0 <change_clock_value+0xac>
+			if (not_save_flag_yellow == 0){
+ 80013b2:	4b37      	ldr	r3, [pc, #220]	; (8001490 <change_clock_value+0x15c>)
+ 80013b4:	681b      	ldr	r3, [r3, #0]
+ 80013b6:	2b00      	cmp	r3, #0
+ 80013b8:	d106      	bne.n	80013c8 <change_clock_value+0x94>
+				not_save_flag_yellow = 1;
+ 80013ba:	4b35      	ldr	r3, [pc, #212]	; (8001490 <change_clock_value+0x15c>)
+ 80013bc:	2201      	movs	r2, #1
+ 80013be:	601a      	str	r2, [r3, #0]
+				save_value_yellow = time_for_yellow;
+ 80013c0:	4b31      	ldr	r3, [pc, #196]	; (8001488 <change_clock_value+0x154>)
+ 80013c2:	681b      	ldr	r3, [r3, #0]
+ 80013c4:	4a33      	ldr	r2, [pc, #204]	; (8001494 <change_clock_value+0x160>)
+ 80013c6:	6013      	str	r3, [r2, #0]
 			time_for_yellow++;
- 80013d6:	4b2e      	ldr	r3, [pc, #184]	; (8001490 <change_clock_value+0x150>)
- 80013d8:	681b      	ldr	r3, [r3, #0]
- 80013da:	3301      	adds	r3, #1
- 80013dc:	4a2c      	ldr	r2, [pc, #176]	; (8001490 <change_clock_value+0x150>)
- 80013de:	6013      	str	r3, [r2, #0]
+ 80013c8:	4b2f      	ldr	r3, [pc, #188]	; (8001488 <change_clock_value+0x154>)
+ 80013ca:	681b      	ldr	r3, [r3, #0]
+ 80013cc:	3301      	adds	r3, #1
+ 80013ce:	4a2e      	ldr	r2, [pc, #184]	; (8001488 <change_clock_value+0x154>)
+ 80013d0:	6013      	str	r3, [r2, #0]
 			if (time_for_yellow > 99){
- 80013e0:	4b2b      	ldr	r3, [pc, #172]	; (8001490 <change_clock_value+0x150>)
- 80013e2:	681b      	ldr	r3, [r3, #0]
- 80013e4:	2b63      	cmp	r3, #99	; 0x63
- 80013e6:	dd02      	ble.n	80013ee <change_clock_value+0xae>
+ 80013d2:	4b2d      	ldr	r3, [pc, #180]	; (8001488 <change_clock_value+0x154>)
+ 80013d4:	681b      	ldr	r3, [r3, #0]
+ 80013d6:	2b63      	cmp	r3, #99	; 0x63
+ 80013d8:	dd02      	ble.n	80013e0 <change_clock_value+0xac>
 				time_for_yellow = 1;
- 80013e8:	4b29      	ldr	r3, [pc, #164]	; (8001490 <change_clock_value+0x150>)
- 80013ea:	2201      	movs	r2, #1
- 80013ec:	601a      	str	r2, [r3, #0]
+ 80013da:	4b2b      	ldr	r3, [pc, #172]	; (8001488 <change_clock_value+0x154>)
+ 80013dc:	2201      	movs	r2, #1
+ 80013de:	601a      	str	r2, [r3, #0]
 		if (isButton3Pressed()){
- 80013ee:	f7fe fef5 	bl	80001dc <isButton3Pressed>
- 80013f2:	4603      	mov	r3, r0
- 80013f4:	2b00      	cmp	r3, #0
- 80013f6:	d03d      	beq.n	8001474 <change_clock_value+0x134>
-			not_save_flag = 0;
- 80013f8:	4b22      	ldr	r3, [pc, #136]	; (8001484 <change_clock_value+0x144>)
- 80013fa:	2200      	movs	r2, #0
- 80013fc:	601a      	str	r2, [r3, #0]
-			save_value_yellow = 0;
- 80013fe:	4b26      	ldr	r3, [pc, #152]	; (8001498 <change_clock_value+0x158>)
- 8001400:	2200      	movs	r2, #0
- 8001402:	601a      	str	r2, [r3, #0]
+ 80013e0:	f7fe fefc 	bl	80001dc <isButton3Pressed>
+ 80013e4:	4603      	mov	r3, r0
+ 80013e6:	2b00      	cmp	r3, #0
+ 80013e8:	d040      	beq.n	800146c <change_clock_value+0x138>
+			not_save_flag_yellow = 0;
+ 80013ea:	4b29      	ldr	r3, [pc, #164]	; (8001490 <change_clock_value+0x15c>)
+ 80013ec:	2200      	movs	r2, #0
+ 80013ee:	601a      	str	r2, [r3, #0]
+			save_value_yellow = time_for_yellow;
+ 80013f0:	4b25      	ldr	r3, [pc, #148]	; (8001488 <change_clock_value+0x154>)
+ 80013f2:	681b      	ldr	r3, [r3, #0]
+ 80013f4:	4a27      	ldr	r2, [pc, #156]	; (8001494 <change_clock_value+0x160>)
+ 80013f6:	6013      	str	r3, [r2, #0]
 			time_for_red = time_for_green + time_for_yellow;
- 8001404:	4b23      	ldr	r3, [pc, #140]	; (8001494 <change_clock_value+0x154>)
- 8001406:	681a      	ldr	r2, [r3, #0]
- 8001408:	4b21      	ldr	r3, [pc, #132]	; (8001490 <change_clock_value+0x150>)
- 800140a:	681b      	ldr	r3, [r3, #0]
- 800140c:	4413      	add	r3, r2
- 800140e:	4a1e      	ldr	r2, [pc, #120]	; (8001488 <change_clock_value+0x148>)
- 8001410:	6013      	str	r3, [r2, #0]
+ 80013f8:	4b24      	ldr	r3, [pc, #144]	; (800148c <change_clock_value+0x158>)
+ 80013fa:	681a      	ldr	r2, [r3, #0]
+ 80013fc:	4b22      	ldr	r3, [pc, #136]	; (8001488 <change_clock_value+0x154>)
+ 80013fe:	681b      	ldr	r3, [r3, #0]
+ 8001400:	4413      	add	r3, r2
+ 8001402:	4a1f      	ldr	r2, [pc, #124]	; (8001480 <change_clock_value+0x14c>)
+ 8001404:	6013      	str	r3, [r2, #0]
 		break;
- 8001412:	e02f      	b.n	8001474 <change_clock_value+0x134>
-		not_save_flag = 0;
- 8001414:	4b1b      	ldr	r3, [pc, #108]	; (8001484 <change_clock_value+0x144>)
- 8001416:	2200      	movs	r2, #0
- 8001418:	601a      	str	r2, [r3, #0]
-		save_value_green = time_for_green;
- 800141a:	4b1e      	ldr	r3, [pc, #120]	; (8001494 <change_clock_value+0x154>)
- 800141c:	681b      	ldr	r3, [r3, #0]
- 800141e:	4a1f      	ldr	r2, [pc, #124]	; (800149c <change_clock_value+0x15c>)
- 8001420:	6013      	str	r3, [r2, #0]
+ 8001406:	e031      	b.n	800146c <change_clock_value+0x138>
 		if (isButton2Pressed()){
- 8001422:	f7fe fec9 	bl	80001b8 <isButton2Pressed>
- 8001426:	4603      	mov	r3, r0
- 8001428:	2b00      	cmp	r3, #0
- 800142a:	d00e      	beq.n	800144a <change_clock_value+0x10a>
+ 8001408:	f7fe fed6 	bl	80001b8 <isButton2Pressed>
+ 800140c:	4603      	mov	r3, r0
+ 800140e:	2b00      	cmp	r3, #0
+ 8001410:	d016      	beq.n	8001440 <change_clock_value+0x10c>
+			if (not_save_flag_green == 0){
+ 8001412:	4b21      	ldr	r3, [pc, #132]	; (8001498 <change_clock_value+0x164>)
+ 8001414:	681b      	ldr	r3, [r3, #0]
+ 8001416:	2b00      	cmp	r3, #0
+ 8001418:	d106      	bne.n	8001428 <change_clock_value+0xf4>
+				not_save_flag_green = 1;
+ 800141a:	4b1f      	ldr	r3, [pc, #124]	; (8001498 <change_clock_value+0x164>)
+ 800141c:	2201      	movs	r2, #1
+ 800141e:	601a      	str	r2, [r3, #0]
+				save_value_green = time_for_green;
+ 8001420:	4b1a      	ldr	r3, [pc, #104]	; (800148c <change_clock_value+0x158>)
+ 8001422:	681b      	ldr	r3, [r3, #0]
+ 8001424:	4a1d      	ldr	r2, [pc, #116]	; (800149c <change_clock_value+0x168>)
+ 8001426:	6013      	str	r3, [r2, #0]
 			time_for_green++;
- 800142c:	4b19      	ldr	r3, [pc, #100]	; (8001494 <change_clock_value+0x154>)
- 800142e:	681b      	ldr	r3, [r3, #0]
- 8001430:	3301      	adds	r3, #1
- 8001432:	4a18      	ldr	r2, [pc, #96]	; (8001494 <change_clock_value+0x154>)
- 8001434:	6013      	str	r3, [r2, #0]
-			not_save_flag = 1;
- 8001436:	4b13      	ldr	r3, [pc, #76]	; (8001484 <change_clock_value+0x144>)
- 8001438:	2201      	movs	r2, #1
- 800143a:	601a      	str	r2, [r3, #0]
+ 8001428:	4b18      	ldr	r3, [pc, #96]	; (800148c <change_clock_value+0x158>)
+ 800142a:	681b      	ldr	r3, [r3, #0]
+ 800142c:	3301      	adds	r3, #1
+ 800142e:	4a17      	ldr	r2, [pc, #92]	; (800148c <change_clock_value+0x158>)
+ 8001430:	6013      	str	r3, [r2, #0]
 			if (time_for_green > 99){
- 800143c:	4b15      	ldr	r3, [pc, #84]	; (8001494 <change_clock_value+0x154>)
- 800143e:	681b      	ldr	r3, [r3, #0]
- 8001440:	2b63      	cmp	r3, #99	; 0x63
- 8001442:	dd02      	ble.n	800144a <change_clock_value+0x10a>
+ 8001432:	4b16      	ldr	r3, [pc, #88]	; (800148c <change_clock_value+0x158>)
+ 8001434:	681b      	ldr	r3, [r3, #0]
+ 8001436:	2b63      	cmp	r3, #99	; 0x63
+ 8001438:	dd02      	ble.n	8001440 <change_clock_value+0x10c>
 				time_for_green = 1;
- 8001444:	4b13      	ldr	r3, [pc, #76]	; (8001494 <change_clock_value+0x154>)
- 8001446:	2201      	movs	r2, #1
- 8001448:	601a      	str	r2, [r3, #0]
+ 800143a:	4b14      	ldr	r3, [pc, #80]	; (800148c <change_clock_value+0x158>)
+ 800143c:	2201      	movs	r2, #1
+ 800143e:	601a      	str	r2, [r3, #0]
 		if (isButton3Pressed()){
- 800144a:	f7fe fec7 	bl	80001dc <isButton3Pressed>
- 800144e:	4603      	mov	r3, r0
- 8001450:	2b00      	cmp	r3, #0
- 8001452:	d011      	beq.n	8001478 <change_clock_value+0x138>
-			not_save_flag = 0;
- 8001454:	4b0b      	ldr	r3, [pc, #44]	; (8001484 <change_clock_value+0x144>)
- 8001456:	2200      	movs	r2, #0
- 8001458:	601a      	str	r2, [r3, #0]
-			save_value_green = 0;
- 800145a:	4b10      	ldr	r3, [pc, #64]	; (800149c <change_clock_value+0x15c>)
- 800145c:	2200      	movs	r2, #0
- 800145e:	601a      	str	r2, [r3, #0]
+ 8001440:	f7fe fecc 	bl	80001dc <isButton3Pressed>
+ 8001444:	4603      	mov	r3, r0
+ 8001446:	2b00      	cmp	r3, #0
+ 8001448:	d012      	beq.n	8001470 <change_clock_value+0x13c>
+			not_save_flag_green = 0;
+ 800144a:	4b13      	ldr	r3, [pc, #76]	; (8001498 <change_clock_value+0x164>)
+ 800144c:	2200      	movs	r2, #0
+ 800144e:	601a      	str	r2, [r3, #0]
+			save_value_green = time_for_green;
+ 8001450:	4b0e      	ldr	r3, [pc, #56]	; (800148c <change_clock_value+0x158>)
+ 8001452:	681b      	ldr	r3, [r3, #0]
+ 8001454:	4a11      	ldr	r2, [pc, #68]	; (800149c <change_clock_value+0x168>)
+ 8001456:	6013      	str	r3, [r2, #0]
 			time_for_red = time_for_green + time_for_yellow;
- 8001460:	4b0c      	ldr	r3, [pc, #48]	; (8001494 <change_clock_value+0x154>)
- 8001462:	681a      	ldr	r2, [r3, #0]
- 8001464:	4b0a      	ldr	r3, [pc, #40]	; (8001490 <change_clock_value+0x150>)
- 8001466:	681b      	ldr	r3, [r3, #0]
- 8001468:	4413      	add	r3, r2
- 800146a:	4a07      	ldr	r2, [pc, #28]	; (8001488 <change_clock_value+0x148>)
- 800146c:	6013      	str	r3, [r2, #0]
+ 8001458:	4b0c      	ldr	r3, [pc, #48]	; (800148c <change_clock_value+0x158>)
+ 800145a:	681a      	ldr	r2, [r3, #0]
+ 800145c:	4b0a      	ldr	r3, [pc, #40]	; (8001488 <change_clock_value+0x154>)
+ 800145e:	681b      	ldr	r3, [r3, #0]
+ 8001460:	4413      	add	r3, r2
+ 8001462:	4a07      	ldr	r2, [pc, #28]	; (8001480 <change_clock_value+0x14c>)
+ 8001464:	6013      	str	r3, [r2, #0]
 		break;
- 800146e:	e003      	b.n	8001478 <change_clock_value+0x138>
+ 8001466:	e003      	b.n	8001470 <change_clock_value+0x13c>
+		break;
+ 8001468:	bf00      	nop
+ 800146a:	e002      	b.n	8001472 <change_clock_value+0x13e>
+		break;
+ 800146c:	bf00      	nop
+ 800146e:	e000      	b.n	8001472 <change_clock_value+0x13e>
 		break;
  8001470:	bf00      	nop
- 8001472:	e002      	b.n	800147a <change_clock_value+0x13a>
-		break;
- 8001474:	bf00      	nop
- 8001476:	e000      	b.n	800147a <change_clock_value+0x13a>
-		break;
- 8001478:	bf00      	nop
 }
- 800147a:	bf00      	nop
- 800147c:	bd80      	pop	{r7, pc}
- 800147e:	bf00      	nop
- 8001480:	20000048 	.word	0x20000048
- 8001484:	200000a4 	.word	0x200000a4
- 8001488:	2000003c 	.word	0x2000003c
- 800148c:	200000a8 	.word	0x200000a8
- 8001490:	20000040 	.word	0x20000040
- 8001494:	20000044 	.word	0x20000044
- 8001498:	200000ac 	.word	0x200000ac
- 800149c:	200000b0 	.word	0x200000b0
+ 8001472:	bf00      	nop
+ 8001474:	bd80      	pop	{r7, pc}
+ 8001476:	bf00      	nop
+ 8001478:	20000048 	.word	0x20000048
+ 800147c:	200000b0 	.word	0x200000b0
+ 8001480:	2000003c 	.word	0x2000003c
+ 8001484:	2000004c 	.word	0x2000004c
+ 8001488:	20000040 	.word	0x20000040
+ 800148c:	20000044 	.word	0x20000044
+ 8001490:	200000b4 	.word	0x200000b4
+ 8001494:	20000050 	.word	0x20000050
+ 8001498:	200000b8 	.word	0x200000b8
+ 800149c:	20000054 	.word	0x20000054
 
 080014a0 <brightBlue>:
 
@@ -2969,20 +2959,20 @@ int main(void)
 	  SCH_Dispatch_Tasks();
  800159e:	f000 f9ed 	bl	800197c <SCH_Dispatch_Tasks>
  80015a2:	e7fc      	b.n	800159e <main+0xe6>
- 80015a4:	200003dc 	.word	0x200003dc
+ 80015a4:	200003e4 	.word	0x200003e4
  80015a8:	40010c00 	.word	0x40010c00
  80015ac:	40010800 	.word	0x40010800
  80015b0:	20000048 	.word	0x20000048
- 80015b4:	200000b4 	.word	0x200000b4
+ 80015b4:	200000bc 	.word	0x200000bc
  80015b8:	080014a1 	.word	0x080014a1
- 80015bc:	080012e1 	.word	0x080012e1
- 80015c0:	080012f9 	.word	0x080012f9
- 80015c4:	08001311 	.word	0x08001311
- 80015c8:	08001329 	.word	0x08001329
+ 80015bc:	080012d5 	.word	0x080012d5
+ 80015c0:	080012ed 	.word	0x080012ed
+ 80015c4:	08001305 	.word	0x08001305
+ 80015c8:	0800131d 	.word	0x0800131d
  80015cc:	08000e51 	.word	0x08000e51
  80015d0:	08000bed 	.word	0x08000bed
  80015d4:	08001239 	.word	0x08001239
- 80015d8:	08001341 	.word	0x08001341
+ 80015d8:	08001335 	.word	0x08001335
 
 080015dc <SystemClock_Config>:
 /**
@@ -3180,7 +3170,7 @@ static void MX_TIM2_Init(void)
  80016e2:	3718      	adds	r7, #24
  80016e4:	46bd      	mov	sp, r7
  80016e6:	bd80      	pop	{r7, pc}
- 80016e8:	200003dc 	.word	0x200003dc
+ 80016e8:	200003e4 	.word	0x200003e4
 
 080016ec <MX_GPIO_Init>:
   * @brief GPIO Initialization Function
@@ -3473,8 +3463,8 @@ unsigned char SCH_Add_Task(void(*pFunction)() , unsigned int DELAY,unsigned int 
  800188e:	46bd      	mov	sp, r7
  8001890:	bc80      	pop	{r7}
  8001892:	4770      	bx	lr
- 8001894:	200000bc 	.word	0x200000bc
- 8001898:	200000b8 	.word	0x200000b8
+ 8001894:	200000c4 	.word	0x200000c4
+ 8001898:	200000c0 	.word	0x200000c0
  800189c:	cccccccd 	.word	0xcccccccd
 
 080018a0 <SCH_Update>:
@@ -3604,7 +3594,7 @@ void SCH_Update(void){
  8001972:	46bd      	mov	sp, r7
  8001974:	bc80      	pop	{r7}
  8001976:	4770      	bx	lr
- 8001978:	200000bc 	.word	0x200000bc
+ 8001978:	200000c4 	.word	0x200000c4
 
 0800197c <SCH_Dispatch_Tasks>:
 
@@ -3696,7 +3686,7 @@ void SCH_Dispatch_Tasks(void){
  8001a0e:	46bd      	mov	sp, r7
  8001a10:	bd80      	pop	{r7, pc}
  8001a12:	bf00      	nop
- 8001a14:	200000bc 	.word	0x200000bc
+ 8001a14:	200000c4 	.word	0x200000c4
 
 08001a18 <SCH_Delete_Task>:
 
@@ -3783,8 +3773,8 @@ uint8_t SCH_Delete_Task(const uint32_t TASK_INDEX){
  8001a9a:	bc80      	pop	{r7}
  8001a9c:	4770      	bx	lr
  8001a9e:	bf00      	nop
- 8001aa0:	200000bc 	.word	0x200000bc
- 8001aa4:	200000b8 	.word	0x200000b8
+ 8001aa0:	200000c4 	.word	0x200000c4
+ 8001aa4:	200000c0 	.word	0x200000c0
 
 08001aa8 <SCH_Go_To_Sleep>:
 
@@ -4119,7 +4109,7 @@ void TIM2_IRQHandler(void)
  8001bc6:	bf00      	nop
  8001bc8:	bd80      	pop	{r7, pc}
  8001bca:	bf00      	nop
- 8001bcc:	200003dc 	.word	0x200003dc
+ 8001bcc:	200003e4 	.word	0x200003e4
 
 08001bd0 <SystemInit>:
   * @note   This function should be used only after reset.
@@ -4219,13 +4209,13 @@ LoopFillZerobss:
   ldr r0, =_sdata
  8001c10:	20000000 	.word	0x20000000
   ldr r1, =_edata
- 8001c14:	20000058 	.word	0x20000058
+ 8001c14:	20000064 	.word	0x20000064
   ldr r2, =_sidata
  8001c18:	08003298 	.word	0x08003298
   ldr r2, =_sbss
- 8001c1c:	20000058 	.word	0x20000058
+ 8001c1c:	20000064 	.word	0x20000064
   ldr r4, =_ebss
- 8001c20:	20000428 	.word	0x20000428
+ 8001c20:	20000430 	.word	0x20000430
 
 08001c24 <ADC1_2_IRQHandler>:
  * @retval : None
@@ -4345,9 +4335,9 @@ __weak HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
  8001ca2:	3708      	adds	r7, #8
  8001ca4:	46bd      	mov	sp, r7
  8001ca6:	bd80      	pop	{r7, pc}
- 8001ca8:	2000004c 	.word	0x2000004c
- 8001cac:	20000054 	.word	0x20000054
- 8001cb0:	20000050 	.word	0x20000050
+ 8001ca8:	20000058 	.word	0x20000058
+ 8001cac:	20000060 	.word	0x20000060
+ 8001cb0:	2000005c 	.word	0x2000005c
 
 08001cb4 <HAL_IncTick>:
   * @note This function is declared as __weak to be overwritten in case of other
@@ -4372,8 +4362,8 @@ __weak void HAL_IncTick(void)
  8001cca:	46bd      	mov	sp, r7
  8001ccc:	bc80      	pop	{r7}
  8001cce:	4770      	bx	lr
- 8001cd0:	20000054 	.word	0x20000054
- 8001cd4:	20000424 	.word	0x20000424
+ 8001cd0:	20000060 	.word	0x20000060
+ 8001cd4:	2000042c 	.word	0x2000042c
 
 08001cd8 <HAL_GetTick>:
   * @note  This function is declared as __weak to be overwritten in case of other
@@ -4392,7 +4382,7 @@ __weak uint32_t HAL_GetTick(void)
  8001ce2:	46bd      	mov	sp, r7
  8001ce4:	bc80      	pop	{r7}
  8001ce6:	4770      	bx	lr
- 8001ce8:	20000424 	.word	0x20000424
+ 8001ce8:	2000042c 	.word	0x2000042c
 
 08001cec <__NVIC_SetPriorityGrouping>:
            In case of a conflict between priority grouping and available
@@ -6615,8 +6605,8 @@ if (((RCC_ClkInitStruct->ClockType) & RCC_CLOCKTYPE_PCLK1) == RCC_CLOCKTYPE_PCLK
  800294c:	40022000 	.word	0x40022000
  8002950:	40021000 	.word	0x40021000
  8002954:	0800326c 	.word	0x0800326c
- 8002958:	2000004c 	.word	0x2000004c
- 800295c:	20000050 	.word	0x20000050
+ 8002958:	20000058 	.word	0x20000058
+ 800295c:	2000005c 	.word	0x2000005c
 
 08002960 <HAL_RCC_GetSysClockFreq>:
   *         right SYSCLK value. Otherwise, any configuration based on this function will be incorrect.
@@ -6791,7 +6781,7 @@ static void RCC_Delay(uint32_t mdelay)
  8002a36:	46bd      	mov	sp, r7
  8002a38:	bc80      	pop	{r7}
  8002a3a:	4770      	bx	lr
- 8002a3c:	2000004c 	.word	0x2000004c
+ 8002a3c:	20000058 	.word	0x20000058
  8002a40:	10624dd3 	.word	0x10624dd3
 
 08002a44 <HAL_TIM_Base_Init>:

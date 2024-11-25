@@ -1,7 +1,7 @@
-fsm_setting.c:19:6:modifyRedLED	8	static
-fsm_setting.c:28:6:modifyYellowLED	8	static
-fsm_setting.c:37:6:modifyGreenLED	8	static
-fsm_setting.c:46:6:change_mode	8	static
+fsm_setting.c:21:6:modifyRedLED	8	static
+fsm_setting.c:30:6:modifyYellowLED	8	static
+fsm_setting.c:39:6:modifyGreenLED	8	static
+fsm_setting.c:48:6:change_mode	8	static
 fsm_setting.c:72:6:mode_1	8	static
 fsm_setting.c:78:6:mode_2	8	static
 fsm_setting.c:84:6:mode_3	8	static
