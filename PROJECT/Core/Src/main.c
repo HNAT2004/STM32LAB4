@@ -89,14 +89,13 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start_IT(&htim2);
 
   HAL_GPIO_WritePin(BLUE_GPIO_Port, BLUE_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(RED_X_GPIO_Port, RED_X_Pin, GPIO_PIN_SET);
@@ -108,7 +107,7 @@ int main(void)
   init7SEG();
   current_mode = 1;
   status = INIT;
-
+  list = createTaskList();
   //One-shot Tasks
   SCH_Add_Task(brightBlue, 1000, 0);
 

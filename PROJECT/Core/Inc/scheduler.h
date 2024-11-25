@@ -8,33 +8,44 @@
 #ifndef INC_SCHEDULER_H_
 #define INC_SCHEDULER_H_
 
+#define SCH_MAX_TASKS 40
+
 #include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct Task {
+void (* pTask )(void);
+	uint32_t Delay ;
+	uint32_t Period ;
+	uint8_t RunMe;
+	struct Task* next;
+}sTask;
+typedef struct {
+    sTask* head;
 
-typedef struct{
-	void (*pTask)(void);
-	uint32_t	Delay;
-	uint32_t	Period;
-	uint8_t		RunMe;
-	uint32_t	TaskID;
-}sTasks;
+} TaskList;
 
-#define SCH_MAX_TASKS	40
-#define NO_TASK_ID		0
-sTasks SCH_tasks_G[SCH_MAX_TASKS];
+TaskList* createTaskList();
 
-void SCH_Init(void);
+extern TaskList* list;
 
-unsigned char SCH_Add_Task (void (*pFunction)(), unsigned int Delay, unsigned int Period);
-
-void SCH_Update(void);
-
-void SCH_Dispatch_Tasks(void);
-
-uint8_t SCH_Delete_Task(uint32_t TASK_INDEX);
+void Timer_init(void);
 
 void Watchdog_init(void);
 
-void Timer_init(void);
+TaskList* createTaskList();
+
+void SCH_Init(void);
+
+void SCH_Add_Task(void (*pTask)(void), uint32_t delay, uint32_t period);
+
+void SCH_Update(void);
+
+sTask* Enqueue(sTask* newTask);
+
+void SCH_Dispatch_Tasks(void);
+
+uint8_t SCH_Delete_Task(sTask* deleted_task);
 
 void SCH_Go_To_Sleep(void);
 
