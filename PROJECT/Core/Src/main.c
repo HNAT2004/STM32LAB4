@@ -110,7 +110,7 @@ int main(void)
   status = INIT;
 
   //One-shot Tasks
-  SCH_Add_Task(brightBlue, 1000, 0);
+//  SCH_Add_Task(brightBlue, 1000, 0);
 
   //Periodic Tasks
   SCH_Add_Task(mode_1, 1000, 10);
