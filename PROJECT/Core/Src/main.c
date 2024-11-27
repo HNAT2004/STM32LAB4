@@ -28,7 +28,7 @@
 #include "fsm_setting.h"
 #include "display7SEG.h"
 #include "global.h"
-#include "tasks.h"
+//#include "tasks.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
