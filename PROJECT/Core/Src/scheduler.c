@@ -7,7 +7,8 @@
 
 #include "scheduler.h"
 
-sTasks SCH_tasks_G[SCH_MAX_TASKS];
+TaskNode* SCH_Task_List = NULL;
+uint32_t Current_Task_ID = 1;
 unsigned char Error_code_G = 0;
 
 #define ERROR_SCH_TOO_MANY_TASKS 1
@@ -22,77 +23,96 @@ unsigned char Error_code_G = 0;
 #define RETURN_NORMAL 10
 
 void SCH_Init(void){
-	unsigned char i;
-	for (i = 0; i < SCH_MAX_TASKS; i++){
-		SCH_Delete_Task(i);
-	}
-	Error_code_G = 0;
-	Timer_init();
-	Watchdog_init();
+    TaskNode* current = SCH_Task_List;
+
+    while (current != NULL){
+        TaskNode* temp = current;
+        current = current->next;
+        free(temp);
+    }
+
+    SCH_Task_List = NULL;
+    Current_Task_ID = 1;
+    Timer_init();
+    Watchdog_init();
 }
 
-unsigned char SCH_Add_Task(void(*pFunction)() , unsigned int DELAY,unsigned int PERIOD){
-	unsigned char Index = 0;
-	while ((SCH_tasks_G[Index].pTask != 0) && (Index < SCH_MAX_TASKS)){
-		Index++;
-	}
-	if(Index == SCH_MAX_TASKS){
-		Error_code_G = ERROR_SCH_TOO_MANY_TASKS;
-		return SCH_MAX_TASKS;
-	}
-	SCH_tasks_G[Index].pTask = pFunction;
-	SCH_tasks_G[Index].Delay = DELAY / 10;
-	SCH_tasks_G[Index].Period = PERIOD / 10;
-	SCH_tasks_G[Index].RunMe = 0;
-	return Index;
+uint8_t SCH_Add_Task(void (*pFunction)(), uint32_t Delay, uint32_t Period){
+    TaskNode* newTask = (TaskNode*)malloc(sizeof(TaskNode));
+    if (newTask == NULL){
+        return 0;
+    }
+
+    newTask->pTask = pFunction;
+    newTask->Delay = Delay;
+    newTask->Period = Period;
+    newTask->RunMe = 0;
+    newTask->TaskID = Current_Task_ID;
+    Current_Task_ID++;
+    newTask->next = NULL;
+
+    if (SCH_Task_List == NULL || SCH_Task_List->Delay > Delay){
+        newTask->next = SCH_Task_List;
+        SCH_Task_List = newTask;
+    }
+    else{
+        TaskNode* current = SCH_Task_List;
+        while (current->next != NULL && current->next->Delay <= Delay){
+            Delay -= current->Delay;
+            current = current->next;
+        }
+        newTask->Delay = Delay;
+        newTask->next = current->next;
+        current->next = newTask;
+    }
+
+    return newTask->TaskID;
 }
 
 void SCH_Update(void){
-	unsigned char Index;
-	for(Index = 0; Index < SCH_MAX_TASKS; Index++){
-		if(SCH_tasks_G[Index].pTask){
-			if(SCH_tasks_G[Index].Delay == 0){
-				SCH_tasks_G[Index].RunMe += 1;
-				if(SCH_tasks_G[Index].Period){
-					SCH_tasks_G[Index].Delay = SCH_tasks_G[Index].Period;
-				}
-			}
-			else{
-				SCH_tasks_G[Index].Delay--;
-			}
-		}
-	}
+    if (SCH_Task_List != NULL && SCH_Task_List->Delay > 0) {
+        SCH_Task_List->Delay--;
+    }
 }
 
-void SCH_Dispatch_Tasks(void){
-	unsigned char Index ;
-	for(Index = 0; Index < SCH_MAX_TASKS; Index++){
-		if(SCH_tasks_G [Index].RunMe > 0){
-			(*SCH_tasks_G[Index].pTask)();
-			SCH_tasks_G[Index].RunMe--;
-			if(SCH_tasks_G[Index].Period == 0){
-				SCH_Delete_Task(Index);
-			}
-		}
-	}
-	SCH_Report_Status();
-	SCH_Go_To_Sleep();
+
+void SCH_Dispatch_Tasks(void) {
+    TaskNode* current = SCH_Task_List;
+    while (current != NULL && current->Delay == 0) {
+        current->pTask();
+        current->RunMe--;
+
+        if (current->Period > 0){
+            SCH_Add_Task(current->pTask, current->Period, current->Period);
+        }
+
+        TaskNode* temp = current;
+        current = current->next;
+        free(temp);
+    }
+
+    SCH_Task_List = current;
 }
 
-uint8_t SCH_Delete_Task(const uint32_t TASK_INDEX){
-	unsigned char Return_code;
-	if(SCH_tasks_G[TASK_INDEX].pTask == 0){
-		Error_code_G = ERROR_SCH_CANNOT_DELETE_TASK;
-		Return_code = RETURN_ERROR;
-	}
-	else{
-		Return_code = RETURN_NORMAL;
-	}
-	SCH_tasks_G[TASK_INDEX].pTask = 0x0000;
-	SCH_tasks_G[TASK_INDEX].Delay = 0;
-	SCH_tasks_G[TASK_INDEX].Period = 0;
-	SCH_tasks_G[TASK_INDEX].RunMe = 0;
-	return Return_code;
+uint8_t SCH_Delete_Task(uint32_t TaskID) {
+    TaskNode* current = SCH_Task_List;
+    TaskNode* previous = NULL;
+
+    while (current != NULL) {
+        if (current->TaskID == TaskID) {
+            if (previous == NULL) {
+                SCH_Task_List = current->next;
+            } else {
+                previous->next = current->next;
+            }
+            free(current);
+            return 1;
+        }
+        previous = current;
+        current = current->next;
+    }
+
+    return 0;
 }
 
 void Watchdog_init(void){

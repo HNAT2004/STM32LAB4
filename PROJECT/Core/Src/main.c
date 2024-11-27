@@ -28,7 +28,7 @@
 #include "fsm_setting.h"
 #include "display7SEG.h"
 #include "global.h"
-//#include "tasks.h"
+#include "tasks.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -107,9 +107,6 @@ int main(void)
   current_mode = 1;
   status = INIT;
 
-  //One-shot Tasks
-
-  //Periodic Tasks
   SCH_Add_Task(mode_1, 1000, 10);
   SCH_Add_Task(mode_2, 1000, 500);
   SCH_Add_Task(mode_3, 1000, 500);
@@ -118,6 +115,12 @@ int main(void)
   SCH_Add_Task(updateBufferOption, 1000, 250);
   SCH_Add_Task(change_mode, 1000, 100);
   SCH_Add_Task(change_clock_value, 1000, 10);
+
+  SCH_Add_Task(Task1, 1000, 0);
+  SCH_Add_Task(Task2, 1000, 500);
+  SCH_Add_Task(Task3, 1500, 500);
+  SCH_Add_Task(Task4, 1000, 1000);
+  SCH_Add_Task(Task5, 1500, 1000);
 //  SCH_Add_Task(check_save, 1000, 10);
   /* USER CODE END 2 */
 
