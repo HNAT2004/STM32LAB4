@@ -58,6 +58,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define BLUE_2_Pin GPIO_PIN_0
+#define BLUE_2_GPIO_Port GPIOA
 #define RED_X_Pin GPIO_PIN_1
 #define RED_X_GPIO_Port GPIOA
 #define YELLOW_X_Pin GPIO_PIN_2
@@ -84,6 +86,12 @@ void Error_Handler(void);
 #define BUTTON_3_GPIO_Port GPIOB
 #define EN1_Y_Pin GPIO_PIN_12
 #define EN1_Y_GPIO_Port GPIOB
+#define BLUE_3_Pin GPIO_PIN_13
+#define BLUE_3_GPIO_Port GPIOB
+#define BLUE_4_Pin GPIO_PIN_14
+#define BLUE_4_GPIO_Port GPIOB
+#define BLUE_5_Pin GPIO_PIN_15
+#define BLUE_5_GPIO_Port GPIOB
 #define SEG1_X_Pin GPIO_PIN_8
 #define SEG1_X_GPIO_Port GPIOA
 #define SEG2_X_Pin GPIO_PIN_9
@@ -110,8 +118,8 @@ void Error_Handler(void);
 #define SEG6_Y_GPIO_Port GPIOB
 #define EN0_Y_Pin GPIO_PIN_7
 #define EN0_Y_GPIO_Port GPIOB
-#define BLUE_Pin GPIO_PIN_8
-#define BLUE_GPIO_Port GPIOB
+#define BLUE_1_Pin GPIO_PIN_8
+#define BLUE_1_GPIO_Port GPIOB
 #define BUTTON_1_Pin GPIO_PIN_9
 #define BUTTON_1_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */

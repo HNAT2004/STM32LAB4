@@ -28,6 +28,7 @@
 #include "fsm_setting.h"
 #include "display7SEG.h"
 #include "global.h"
+#include "tasks.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -61,9 +62,7 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void brightBlue(void){
-	HAL_GPIO_TogglePin(BLUE_GPIO_Port, BLUE_Pin);
-}
+
 /* USER CODE END 0 */
 
 /**
@@ -98,7 +97,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
 
-  HAL_GPIO_WritePin(BLUE_GPIO_Port, BLUE_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(RED_X_GPIO_Port, RED_X_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(YELLOW_X_GPIO_Port, YELLOW_X_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(GREEN_X_GPIO_Port, GREEN_X_Pin, GPIO_PIN_SET);
@@ -110,7 +108,6 @@ int main(void)
   status = INIT;
 
   //One-shot Tasks
-  SCH_Add_Task(brightBlue, 1000, 0);
 
   //Periodic Tasks
   SCH_Add_Task(mode_1, 1000, 10);
@@ -230,35 +227,38 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, RED_X_Pin|YELLOW_X_Pin|GREEN_X_Pin|RED_Y_Pin
-                          |YELLOW_Y_Pin|GREEN_Y_Pin|SEG0_X_Pin|SEG1_X_Pin
-                          |SEG2_X_Pin|SEG3_X_Pin|SEG4_X_Pin|SEG5_X_Pin
-                          |SEG6_X_Pin|EN0_X_Pin|EN1_X_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, BLUE_2_Pin|RED_X_Pin|YELLOW_X_Pin|GREEN_X_Pin
+                          |RED_Y_Pin|YELLOW_Y_Pin|GREEN_Y_Pin|SEG0_X_Pin
+                          |SEG1_X_Pin|SEG2_X_Pin|SEG3_X_Pin|SEG4_X_Pin
+                          |SEG5_X_Pin|SEG6_X_Pin|EN0_X_Pin|EN1_X_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, SEG0_Y_Pin|SEG1_Y_Pin|SEG2_Y_Pin|EN1_Y_Pin
-                          |SEG3_Y_Pin|SEG4_Y_Pin|SEG5_Y_Pin|SEG6_Y_Pin
-                          |EN0_Y_Pin|BLUE_Pin, GPIO_PIN_RESET);
+                          |BLUE_3_Pin|BLUE_4_Pin|BLUE_5_Pin|SEG3_Y_Pin
+                          |SEG4_Y_Pin|SEG5_Y_Pin|SEG6_Y_Pin|EN0_Y_Pin
+                          |BLUE_1_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : RED_X_Pin YELLOW_X_Pin GREEN_X_Pin RED_Y_Pin
-                           YELLOW_Y_Pin GREEN_Y_Pin SEG0_X_Pin SEG1_X_Pin
-                           SEG2_X_Pin SEG3_X_Pin SEG4_X_Pin SEG5_X_Pin
-                           SEG6_X_Pin EN0_X_Pin EN1_X_Pin */
-  GPIO_InitStruct.Pin = RED_X_Pin|YELLOW_X_Pin|GREEN_X_Pin|RED_Y_Pin
-                          |YELLOW_Y_Pin|GREEN_Y_Pin|SEG0_X_Pin|SEG1_X_Pin
-                          |SEG2_X_Pin|SEG3_X_Pin|SEG4_X_Pin|SEG5_X_Pin
-                          |SEG6_X_Pin|EN0_X_Pin|EN1_X_Pin;
+  /*Configure GPIO pins : BLUE_2_Pin RED_X_Pin YELLOW_X_Pin GREEN_X_Pin
+                           RED_Y_Pin YELLOW_Y_Pin GREEN_Y_Pin SEG0_X_Pin
+                           SEG1_X_Pin SEG2_X_Pin SEG3_X_Pin SEG4_X_Pin
+                           SEG5_X_Pin SEG6_X_Pin EN0_X_Pin EN1_X_Pin */
+  GPIO_InitStruct.Pin = BLUE_2_Pin|RED_X_Pin|YELLOW_X_Pin|GREEN_X_Pin
+                          |RED_Y_Pin|YELLOW_Y_Pin|GREEN_Y_Pin|SEG0_X_Pin
+                          |SEG1_X_Pin|SEG2_X_Pin|SEG3_X_Pin|SEG4_X_Pin
+                          |SEG5_X_Pin|SEG6_X_Pin|EN0_X_Pin|EN1_X_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : SEG0_Y_Pin SEG1_Y_Pin SEG2_Y_Pin EN1_Y_Pin
-                           SEG3_Y_Pin SEG4_Y_Pin SEG5_Y_Pin SEG6_Y_Pin
-                           EN0_Y_Pin BLUE_Pin */
+                           BLUE_3_Pin BLUE_4_Pin BLUE_5_Pin SEG3_Y_Pin
+                           SEG4_Y_Pin SEG5_Y_Pin SEG6_Y_Pin EN0_Y_Pin
+                           BLUE_1_Pin */
   GPIO_InitStruct.Pin = SEG0_Y_Pin|SEG1_Y_Pin|SEG2_Y_Pin|EN1_Y_Pin
-                          |SEG3_Y_Pin|SEG4_Y_Pin|SEG5_Y_Pin|SEG6_Y_Pin
-                          |EN0_Y_Pin|BLUE_Pin;
+                          |BLUE_3_Pin|BLUE_4_Pin|BLUE_5_Pin|SEG3_Y_Pin
+                          |SEG4_Y_Pin|SEG5_Y_Pin|SEG6_Y_Pin|EN0_Y_Pin
+                          |BLUE_1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
