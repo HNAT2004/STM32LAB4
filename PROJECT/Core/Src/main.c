@@ -97,6 +97,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
 
+
   HAL_GPIO_WritePin(RED_X_GPIO_Port, RED_X_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(YELLOW_X_GPIO_Port, YELLOW_X_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(GREEN_X_GPIO_Port, GREEN_X_Pin, GPIO_PIN_SET);
@@ -107,20 +108,20 @@ int main(void)
   current_mode = 1;
   status = INIT;
 
-  SCH_Add_Task(mode_1, 1000, 10);
-  SCH_Add_Task(mode_2, 1000, 500);
-  SCH_Add_Task(mode_3, 1000, 500);
-  SCH_Add_Task(mode_4, 1000, 500);
-  SCH_Add_Task(countdown, 1000, 1000);
-  SCH_Add_Task(updateBufferOption, 1000, 250);
-  SCH_Add_Task(change_mode, 1000, 100);
-  SCH_Add_Task(change_clock_value, 1000, 10);
+  SCH_Add_Task(mode_1, 100, 1);
+  SCH_Add_Task(mode_2, 100, 50);
+  SCH_Add_Task(mode_3, 100, 50);
+  SCH_Add_Task(mode_4, 100, 50);
+  SCH_Add_Task(countdown, 100, 100);
+  SCH_Add_Task(updateBufferOption, 100, 25);
+  SCH_Add_Task(change_mode, 100, 10);
+//  SCH_Add_Task(change_clock_value, 100, 1);
 
-  SCH_Add_Task(Task1, 1000, 0);
-  SCH_Add_Task(Task2, 1000, 500);
-  SCH_Add_Task(Task3, 1500, 500);
-  SCH_Add_Task(Task4, 1000, 1000);
-  SCH_Add_Task(Task5, 1500, 1000);
+  SCH_Add_Task(Task1, 50, 0);
+  SCH_Add_Task(Task2, 50, 50);
+  SCH_Add_Task(Task3, 100, 50);
+  SCH_Add_Task(Task4, 50, 100);
+  SCH_Add_Task(Task5, 100, 100);
 //  SCH_Add_Task(check_save, 1000, 10);
   /* USER CODE END 2 */
 

@@ -29,8 +29,8 @@ void fsm_automatic_run(void){
 		status = AUTO_RED_X_GREEN_Y;
 		clock_X = time_for_red;
 		clock_Y = time_for_green;
-		counter_X = time_for_red * 50;
-		counter_Y = time_for_green * 50;
+		counter_X = time_for_red * 150;
+		counter_Y = time_for_green * 150;
 		break;
 
 	case AUTO_RED_X_GREEN_Y:
@@ -44,7 +44,7 @@ void fsm_automatic_run(void){
 		counter_Y--;
 		if (counter_Y <= 0){
 			status = AUTO_RED_X_YELLOW_Y;
-			counter_Y = time_for_yellow * 50;
+			counter_Y = time_for_yellow * 150;
 			clock_Y = time_for_yellow;
 		}
 		break;
@@ -60,8 +60,8 @@ void fsm_automatic_run(void){
 		counter_Y--;
 		if (counter_X <= 0 && counter_Y <= 0){
 			status = AUTO_GREEN_X_RED_Y;
-			counter_X = time_for_green * 50;
-			counter_Y = time_for_red * 50;
+			counter_X = time_for_green * 150;
+			counter_Y = time_for_red * 150;
 			clock_X = time_for_green;
 			clock_Y = time_for_red;
 		}
@@ -78,7 +78,7 @@ void fsm_automatic_run(void){
 		counter_Y--;
 		if (counter_X <= 0){
 			status = AUTO_YELLOW_X_RED_Y;
-			counter_X = time_for_yellow * 50;
+			counter_X = time_for_yellow * 150;
 			clock_X = time_for_yellow;
 		}
 		break;
@@ -93,8 +93,8 @@ void fsm_automatic_run(void){
 		counter_Y--;
 		if (counter_X <= 0 && counter_Y <= 0){
 			status = AUTO_RED_X_GREEN_Y;
-			counter_X = time_for_red * 50;
-			counter_Y = time_for_green * 50;
+			counter_X = time_for_red * 150;
+			counter_Y = time_for_green * 150;
 			clock_X = time_for_red;
 			clock_Y = time_for_green;
 		}

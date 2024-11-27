@@ -7,10 +7,7 @@
 
 #include "scheduler.h"
 
-TaskNode* SCH_Task_List = NULL;
-uint32_t Current_Task_ID = 1;
 unsigned char Error_code_G = 0;
-
 #define ERROR_SCH_TOO_MANY_TASKS 1
 #define ERROR_SCH_WAITING_FOR_SLAVE_TO_ACK 2
 #define ERROR_SCH_WAITING_FOR_START_COMMAND_FROM_MASTER 3
@@ -22,129 +19,136 @@ unsigned char Error_code_G = 0;
 #define RETURN_ERROR 9
 #define RETURN_NORMAL 10
 
-void SCH_Init(void){
-    TaskNode* current = SCH_Task_List;
+TaskNode* SCH_Task_List;
+uint16_t time_skip;
+uint16_t count_task;
+uint32_t Current_Task_ID = 1;
 
-    while (current != NULL){
-        TaskNode* temp = current;
-        current = current->next;
-        free(temp);
-    }
+TaskNode* createTaskList(){
+	TaskNode* SCH_Task_List = (TaskNode*)malloc(sizeof(TaskNode));
+	SCH_Task_List->head = NULL;
+    return SCH_Task_List;
+}
 
-    SCH_Task_List = NULL;
+void SCH_Init(void) {
+	SCH_Task_List = createTaskList();
+	time_skip = 0;
+	count_task = 0;
+	Error_code_G = 0;
     Current_Task_ID = 1;
     Timer_init();
     Watchdog_init();
 }
 
-uint8_t SCH_Add_Task(void (*pFunction)(), uint32_t Delay, uint32_t Period){
-    TaskNode* newTask = (TaskNode*)malloc(sizeof(TaskNode));
-    if (newTask == NULL){
-        return 0;
-    }
+uint8_t SCH_Add_Task(void (*pFunction)(), uint32_t Delay, uint32_t Period) {
+	TaskNode* newNode = (TaskNode*)malloc(sizeof(TaskNode));
 
-    newTask->pTask = pFunction;
-    newTask->Delay = Delay;
-    newTask->Period = Period;
-    newTask->RunMe = 0;
-    newTask->TaskID = Current_Task_ID;
-    Current_Task_ID++;
-    newTask->next = NULL;
-
-    if (SCH_Task_List == NULL || SCH_Task_List->Delay > Delay){
-        newTask->next = SCH_Task_List;
-        SCH_Task_List = newTask;
-    }
-    else{
+	newNode->task.pTask = pFunction;
+	newNode->task.Delay = Delay;
+	newNode->task.Period = Period;
+	newNode->task.RunMe = 0;
+	newNode->task.TaskID = Current_Task_ID++;
+	newNode->next = NULL;
+    if (!SCH_Task_List || SCH_Task_List->task.Delay > Delay) {
+        if (SCH_Task_List) {
+            SCH_Task_List->task.Delay -= Delay;
+        }
+        newNode->next = SCH_Task_List;
+        SCH_Task_List = newNode;
+    } else {
         TaskNode* current = SCH_Task_List;
-        while (current->next != NULL && current->next->Delay <= Delay){
-            Delay -= current->Delay;
+        while (current->next && current->next->task.Delay <= Delay) {
+            Delay -= current->task.Delay;
             current = current->next;
         }
-        newTask->Delay = Delay;
-        newTask->next = current->next;
-        current->next = newTask;
+        if (current->next) {
+            current->next->task.Delay -= Delay;
+        }
+        newNode->task.Delay = Delay;
+        newNode->next = current->next;
+        current->next = newNode;
     }
 
-    return newTask->TaskID;
+    return newNode->task.TaskID;
 }
 
-void SCH_Update(void){
-    if (SCH_Task_List != NULL && SCH_Task_List->Delay > 0) {
-        SCH_Task_List->Delay--;
+void SCH_Update(void) {
+    if (SCH_Task_List && SCH_Task_List->task.Delay > 0) {
+        SCH_Task_List->task.Delay--;
     }
 }
-
 
 void SCH_Dispatch_Tasks(void) {
-    TaskNode* current = SCH_Task_List;
-    while (current != NULL && current->Delay == 0) {
-        current->pTask();
-        current->RunMe--;
+    while (SCH_Task_List && SCH_Task_List->task.Delay == 0) {
+        TaskNode* current = SCH_Task_List;
 
-        if (current->Period > 0){
-            SCH_Add_Task(current->pTask, current->Period, current->Period);
+        current->task.pTask();
+
+        if (current->task.Period > 0) {
+            current->task.Delay = current->task.Period;
+            SCH_Task_List = current->next;
+            SCH_Add_Task(current->task.pTask, current->task.Delay, current->task.Period);
+            free(current);
+        } else {
+            SCH_Task_List = current->next;
+            free(current);
         }
-
-        TaskNode* temp = current;
-        current = current->next;
-        free(temp);
     }
-
-    SCH_Task_List = current;
 }
+
 
 uint8_t SCH_Delete_Task(uint32_t TaskID) {
     TaskNode* current = SCH_Task_List;
     TaskNode* previous = NULL;
 
-    while (current != NULL) {
-        if (current->TaskID == TaskID) {
-            if (previous == NULL) {
+    while (current) {
+        if (current->task.TaskID == TaskID) {
+            if (!previous) {
                 SCH_Task_List = current->next;
             } else {
+                if (current->next) {
+                    current->next->task.Delay += current->task.Delay;
+                }
                 previous->next = current->next;
             }
             free(current);
-            return 1;
+            return RETURN_NORMAL;
         }
         previous = current;
         current = current->next;
     }
+    return RETURN_ERROR;
+}
 
-    return 0;
+
+void Timer_init(void){
+
 }
 
 void Watchdog_init(void){
-	//TODO
-}
 
-void Timer_init(void){
-	//TODO
 }
 
 void SCH_Go_To_Sleep(void){
-	//TODO
+
 }
 
-void SCH_Report_Status(void){
+void SCH_Report_Status(void) {
 #ifdef SCH_REPORT_ERRORS
-	if(Error_code_G != Last_error_code_G){
-		Error_port = 255 - Error_code_G;
-		Last_error_code_G = Error_code_G ;
-		if(Error_code_G != 0){
-			Error_tick_count_G = 60000;
-		}
-		else{
-			Error_tick_count_G = 0;
-		}
-	}
-	else{
-		if(Error_tick_count_G != 0){
-			if(--Error_tick_count_G == 0 ){
-				Error_code_G = 0;
-			}
-		}
-	}
+    if (Error_code_G != Last_error_code_G) {
+        Error_port = 255 - Error_code_G;
+        Last_error_code_G = Error_code_G;
+        if (Error_code_G != 0) {
+            Error_tick_count_G = 60000;
+        } else {
+            Error_tick_count_G = 0;
+        }
+    } else {
+        if (Error_tick_count_G != 0) {
+            if (--Error_tick_count_G == 0) {
+                Error_code_G = 0;
+            }
+        }
+    }
 #endif
 }

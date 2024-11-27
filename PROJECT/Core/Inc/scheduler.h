@@ -11,15 +11,21 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-typedef struct TaskNode {
+typedef struct {
     void (*pTask)(void);
     uint32_t Delay;
     uint32_t Period;
     uint8_t RunMe;
     uint32_t TaskID;
-    struct TaskNode* next;
-} TaskNode;
+}sTask;
 
+typedef struct TaskNode {
+    sTask task;
+    struct TaskNode* head;
+    struct TaskNode* next;
+}TaskNode;
+
+extern TaskNode* SCH_Task_List;
 
 void SCH_Init(void);
 
