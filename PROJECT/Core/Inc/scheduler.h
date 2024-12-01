@@ -21,7 +21,6 @@ typedef struct {
 
 typedef struct TaskNode {
     sTask task;
-    struct TaskNode* head;
     struct TaskNode* next;
 }TaskNode;
 
@@ -29,7 +28,9 @@ extern TaskNode* SCH_Task_List;
 
 void SCH_Init(void);
 
-uint8_t SCH_Add_Task(void (*pFunction)(), uint32_t Delay, uint32_t Period);
+uint8_t SCH_Add_Task(void (*pFunction)(void),
+                     uint32_t Delay,
+                     uint32_t Period);
 
 void SCH_Update(void);
 

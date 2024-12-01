@@ -19,36 +19,33 @@ unsigned char Error_code_G = 0;
 #define RETURN_ERROR 9
 #define RETURN_NORMAL 10
 
-TaskNode* SCH_Task_List;
-uint16_t time_skip;
-uint16_t count_task;
+TaskNode* SCH_Task_List = NULL;
 uint32_t Current_Task_ID = 1;
 
-TaskNode* createTaskList(){
-	TaskNode* SCH_Task_List = (TaskNode*)malloc(sizeof(TaskNode));
-	SCH_Task_List->head = NULL;
-    return SCH_Task_List;
-}
-
 void SCH_Init(void) {
-	SCH_Task_List = createTaskList();
-	time_skip = 0;
-	count_task = 0;
-	Error_code_G = 0;
+    SCH_Task_List = NULL;
     Current_Task_ID = 1;
     Timer_init();
     Watchdog_init();
 }
 
-uint8_t SCH_Add_Task(void (*pFunction)(), uint32_t Delay, uint32_t Period) {
-	TaskNode* newNode = (TaskNode*)malloc(sizeof(TaskNode));
+uint8_t SCH_Add_Task(void (*pFunction)(void), uint32_t Delay, uint32_t Period) {
+    if (!pFunction) {
+        return RETURN_ERROR;
+    }
 
-	newNode->task.pTask = pFunction;
-	newNode->task.Delay = Delay;
-	newNode->task.Period = Period;
-	newNode->task.RunMe = 0;
-	newNode->task.TaskID = Current_Task_ID++;
-	newNode->next = NULL;
+    TaskNode* newNode = (TaskNode*)malloc(sizeof(TaskNode));
+    if (!newNode) {
+        return RETURN_ERROR;
+    }
+
+    newNode->task.pTask = pFunction;
+    newNode->task.Delay = Delay;
+    newNode->task.Period = Period;
+    newNode->task.RunMe = 0;
+    newNode->task.TaskID = Current_Task_ID++;
+    newNode->next = NULL;
+
     if (!SCH_Task_List || SCH_Task_List->task.Delay > Delay) {
         if (SCH_Task_List) {
             SCH_Task_List->task.Delay -= Delay;
@@ -58,7 +55,7 @@ uint8_t SCH_Add_Task(void (*pFunction)(), uint32_t Delay, uint32_t Period) {
     } else {
         TaskNode* current = SCH_Task_List;
         while (current->next && current->next->task.Delay <= Delay) {
-            Delay -= current->task.Delay;
+            Delay -= current->next->task.Delay;
             current = current->next;
         }
         if (current->next) {
@@ -96,8 +93,11 @@ void SCH_Dispatch_Tasks(void) {
     }
 }
 
-
 uint8_t SCH_Delete_Task(uint32_t TaskID) {
+    if (!SCH_Task_List) {
+        return RETURN_ERROR;
+    }
+
     TaskNode* current = SCH_Task_List;
     TaskNode* previous = NULL;
 
@@ -117,20 +117,21 @@ uint8_t SCH_Delete_Task(uint32_t TaskID) {
         previous = current;
         current = current->next;
     }
+
     return RETURN_ERROR;
 }
 
 
 void Timer_init(void){
-
+	//TODO
 }
 
 void Watchdog_init(void){
-
+	//TODO
 }
 
 void SCH_Go_To_Sleep(void){
-
+	//TODO
 }
 
 void SCH_Report_Status(void) {
