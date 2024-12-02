@@ -1952,20 +1952,18 @@ void fsm_automatic_run(void){
  8000ef0:	681b      	ldr	r3, [r3, #0]
  8000ef2:	4a95      	ldr	r2, [pc, #596]	; (8001148 <fsm_automatic_run+0x2d0>)
  8000ef4:	6013      	str	r3, [r2, #0]
-		counter_X = time_for_red * 65;
+		counter_X = time_for_red * 50;
  8000ef6:	4b91      	ldr	r3, [pc, #580]	; (800113c <fsm_automatic_run+0x2c4>)
- 8000ef8:	681a      	ldr	r2, [r3, #0]
- 8000efa:	4613      	mov	r3, r2
- 8000efc:	019b      	lsls	r3, r3, #6
- 8000efe:	4413      	add	r3, r2
+ 8000ef8:	681b      	ldr	r3, [r3, #0]
+ 8000efa:	2232      	movs	r2, #50	; 0x32
+ 8000efc:	fb02 f303 	mul.w	r3, r2, r3
  8000f00:	4a92      	ldr	r2, [pc, #584]	; (800114c <fsm_automatic_run+0x2d4>)
  8000f02:	6013      	str	r3, [r2, #0]
-		counter_Y = time_for_green * 65;
+		counter_Y = time_for_green * 50;
  8000f04:	4b8f      	ldr	r3, [pc, #572]	; (8001144 <fsm_automatic_run+0x2cc>)
- 8000f06:	681a      	ldr	r2, [r3, #0]
- 8000f08:	4613      	mov	r3, r2
- 8000f0a:	019b      	lsls	r3, r3, #6
- 8000f0c:	4413      	add	r3, r2
+ 8000f06:	681b      	ldr	r3, [r3, #0]
+ 8000f08:	2232      	movs	r2, #50	; 0x32
+ 8000f0a:	fb02 f303 	mul.w	r3, r2, r3
  8000f0e:	4a90      	ldr	r2, [pc, #576]	; (8001150 <fsm_automatic_run+0x2d8>)
  8000f10:	6013      	str	r3, [r2, #0]
 		break;
@@ -2023,12 +2021,11 @@ void fsm_automatic_run(void){
  8000f6e:	4b71      	ldr	r3, [pc, #452]	; (8001134 <fsm_automatic_run+0x2bc>)
  8000f70:	220f      	movs	r2, #15
  8000f72:	601a      	str	r2, [r3, #0]
-			counter_Y = time_for_yellow * 65;
+			counter_Y = time_for_yellow * 50;
  8000f74:	4b77      	ldr	r3, [pc, #476]	; (8001154 <fsm_automatic_run+0x2dc>)
- 8000f76:	681a      	ldr	r2, [r3, #0]
- 8000f78:	4613      	mov	r3, r2
- 8000f7a:	019b      	lsls	r3, r3, #6
- 8000f7c:	4413      	add	r3, r2
+ 8000f76:	681b      	ldr	r3, [r3, #0]
+ 8000f78:	2232      	movs	r2, #50	; 0x32
+ 8000f7a:	fb02 f303 	mul.w	r3, r2, r3
  8000f7e:	4a74      	ldr	r2, [pc, #464]	; (8001150 <fsm_automatic_run+0x2d8>)
  8000f80:	6013      	str	r3, [r2, #0]
 			clock_Y = time_for_yellow;
@@ -2096,20 +2093,18 @@ void fsm_automatic_run(void){
  8000ff0:	4b50      	ldr	r3, [pc, #320]	; (8001134 <fsm_automatic_run+0x2bc>)
  8000ff2:	2210      	movs	r2, #16
  8000ff4:	601a      	str	r2, [r3, #0]
-			counter_X = time_for_green * 65;
+			counter_X = time_for_green * 50;
  8000ff6:	4b53      	ldr	r3, [pc, #332]	; (8001144 <fsm_automatic_run+0x2cc>)
- 8000ff8:	681a      	ldr	r2, [r3, #0]
- 8000ffa:	4613      	mov	r3, r2
- 8000ffc:	019b      	lsls	r3, r3, #6
- 8000ffe:	4413      	add	r3, r2
+ 8000ff8:	681b      	ldr	r3, [r3, #0]
+ 8000ffa:	2232      	movs	r2, #50	; 0x32
+ 8000ffc:	fb02 f303 	mul.w	r3, r2, r3
  8001000:	4a52      	ldr	r2, [pc, #328]	; (800114c <fsm_automatic_run+0x2d4>)
  8001002:	6013      	str	r3, [r2, #0]
-			counter_Y = time_for_red * 65;
+			counter_Y = time_for_red * 50;
  8001004:	4b4d      	ldr	r3, [pc, #308]	; (800113c <fsm_automatic_run+0x2c4>)
- 8001006:	681a      	ldr	r2, [r3, #0]
- 8001008:	4613      	mov	r3, r2
- 800100a:	019b      	lsls	r3, r3, #6
- 800100c:	4413      	add	r3, r2
+ 8001006:	681b      	ldr	r3, [r3, #0]
+ 8001008:	2232      	movs	r2, #50	; 0x32
+ 800100a:	fb02 f303 	mul.w	r3, r2, r3
  800100e:	4a50      	ldr	r2, [pc, #320]	; (8001150 <fsm_automatic_run+0x2d8>)
  8001010:	6013      	str	r3, [r2, #0]
 			clock_X = time_for_green;
@@ -2178,12 +2173,11 @@ void fsm_automatic_run(void){
  800107c:	4b2d      	ldr	r3, [pc, #180]	; (8001134 <fsm_automatic_run+0x2bc>)
  800107e:	2211      	movs	r2, #17
  8001080:	601a      	str	r2, [r3, #0]
-			counter_X = time_for_yellow * 65;
+			counter_X = time_for_yellow * 50;
  8001082:	4b34      	ldr	r3, [pc, #208]	; (8001154 <fsm_automatic_run+0x2dc>)
- 8001084:	681a      	ldr	r2, [r3, #0]
- 8001086:	4613      	mov	r3, r2
- 8001088:	019b      	lsls	r3, r3, #6
- 800108a:	4413      	add	r3, r2
+ 8001084:	681b      	ldr	r3, [r3, #0]
+ 8001086:	2232      	movs	r2, #50	; 0x32
+ 8001088:	fb02 f303 	mul.w	r3, r2, r3
  800108c:	4a2f      	ldr	r2, [pc, #188]	; (800114c <fsm_automatic_run+0x2d4>)
  800108e:	6013      	str	r3, [r2, #0]
 			clock_X = time_for_yellow;
@@ -2250,20 +2244,18 @@ void fsm_automatic_run(void){
  80010fa:	4b0e      	ldr	r3, [pc, #56]	; (8001134 <fsm_automatic_run+0x2bc>)
  80010fc:	220e      	movs	r2, #14
  80010fe:	601a      	str	r2, [r3, #0]
-			counter_X = time_for_red * 65;
+			counter_X = time_for_red * 50;
  8001100:	4b0e      	ldr	r3, [pc, #56]	; (800113c <fsm_automatic_run+0x2c4>)
- 8001102:	681a      	ldr	r2, [r3, #0]
- 8001104:	4613      	mov	r3, r2
- 8001106:	019b      	lsls	r3, r3, #6
- 8001108:	4413      	add	r3, r2
+ 8001102:	681b      	ldr	r3, [r3, #0]
+ 8001104:	2232      	movs	r2, #50	; 0x32
+ 8001106:	fb02 f303 	mul.w	r3, r2, r3
  800110a:	4a10      	ldr	r2, [pc, #64]	; (800114c <fsm_automatic_run+0x2d4>)
  800110c:	6013      	str	r3, [r2, #0]
-			counter_Y = time_for_green * 65;
+			counter_Y = time_for_green * 50;
  800110e:	4b0d      	ldr	r3, [pc, #52]	; (8001144 <fsm_automatic_run+0x2cc>)
- 8001110:	681a      	ldr	r2, [r3, #0]
- 8001112:	4613      	mov	r3, r2
- 8001114:	019b      	lsls	r3, r3, #6
- 8001116:	4413      	add	r3, r2
+ 8001110:	681b      	ldr	r3, [r3, #0]
+ 8001112:	2232      	movs	r2, #50	; 0x32
+ 8001114:	fb02 f303 	mul.w	r3, r2, r3
  8001118:	4a0d      	ldr	r2, [pc, #52]	; (8001150 <fsm_automatic_run+0x2d8>)
  800111a:	6013      	str	r3, [r2, #0]
 			clock_X = time_for_red;
