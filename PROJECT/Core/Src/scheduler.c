@@ -25,8 +25,6 @@ uint32_t Current_Task_ID = 1;
 void SCH_Init(void) {
     SCH_Task_List = NULL;
     Current_Task_ID = 1;
-    Timer_init();
-    Watchdog_init();
 }
 
 uint8_t SCH_Add_Task(void (*pFunction)(void), uint32_t Delay, uint32_t Period) {

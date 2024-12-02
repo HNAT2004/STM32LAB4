@@ -29,21 +29,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  12 .debug_info   0000b696  00000000  00000000  000200f5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00001f63  00000000  00000000  0002b78b  2**0
+ 13 .debug_abbrev 00001f49  00000000  00000000  0002b78b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00000b48  00000000  00000000  0002d6f0  2**3
+ 14 .debug_aranges 00000b48  00000000  00000000  0002d6d8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 00000a18  00000000  00000000  0002e238  2**3
+ 15 .debug_ranges 00000a18  00000000  00000000  0002e220  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00017f2f  00000000  00000000  0002ec50  2**0
+ 16 .debug_macro  00017f2f  00000000  00000000  0002ec38  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000c963  00000000  00000000  00046b7f  2**0
+ 17 .debug_line   0000c95f  00000000  00000000  00046b67  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00086158  00000000  00000000  000534e2  2**0
+ 18 .debug_str    00086158  00000000  00000000  000534c6  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000d963a  2**0
+ 19 .comment      00000053  00000000  00000000  000d961e  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00002d78  00000000  00000000  000d9690  2**2
+ 20 .debug_frame  00002d7c  00000000  00000000  000d9674  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -3394,9 +3394,9 @@ __STATIC_FORCEINLINE void __disable_irq(void)
  800181a:	e7fe      	b.n	800181a <Error_Handler+0x8>
 
 0800181c <SCH_Add_Task>:
+void SCH_Init(void) {
+    SCH_Task_List = NULL;
     Current_Task_ID = 1;
-    Timer_init();
-    Watchdog_init();
 }
 
 uint8_t SCH_Add_Task(void (*pFunction)(void), uint32_t Delay, uint32_t Period) {
