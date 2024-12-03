@@ -98,13 +98,13 @@ uint8_t SCH_Delete_Task(uint32_t TaskID){
     TaskNode* current = SCH_Task_List;
     TaskNode* previous = NULL;
 
-    while (current) {
+    while (current){
         if (current->task.TaskID == TaskID){			//Kiểm tra task hiện tại có TaskID trùng với ID cần xóa
             if (!previous){								//Nếu previous là NULL => current đang trỏ đến node đầu tiên trong danh sách.
                 SCH_Task_List = current->next;
             }
             else{
-                if (current->next){
+                if (current->next){		//Task ở giữa hoặc cuối list: Điều chỉnh Delay task tiếp theo nếu có
                     current->next->task.Delay += current->task.Delay;	//Nếu có task đứng sau, cộng Delay của task bị xóa vào Delay của task tiếp theo.
                 }
                 previous->next = current->next;

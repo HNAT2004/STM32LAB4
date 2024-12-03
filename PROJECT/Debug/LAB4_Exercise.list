@@ -3391,7 +3391,7 @@ void SCH_Init(void){
     Current_Task_ID = 1;
 }
 
-uint8_t SCH_Add_Task(void (*pFunction)(void), uint32_t Delay, uint32_t Period){
+uint8_t SCH_Add_Task(void (*pFunction)(void), uint32_t Delay, uint32_t Period){	//Thêm trước khi vào while(1)
  800181c:	b580      	push	{r7, lr}
  800181e:	b086      	sub	sp, #24
  8001820:	af00      	add	r7, sp, #0
@@ -3473,7 +3473,7 @@ uint8_t SCH_Add_Task(void (*pFunction)(void), uint32_t Delay, uint32_t Period){
  8001896:	681a      	ldr	r2, [r3, #0]
  8001898:	693b      	ldr	r3, [r7, #16]
  800189a:	615a      	str	r2, [r3, #20]
-        SCH_Task_List = newNode;
+        SCH_Task_List = newNode;		//Trường hợp node mới được thêm vào đầu danh sách
  800189c:	4a1c      	ldr	r2, [pc, #112]	; (8001910 <SCH_Add_Task+0xf4>)
  800189e:	693b      	ldr	r3, [r7, #16]
  80018a0:	6013      	str	r3, [r2, #0]
@@ -3484,7 +3484,7 @@ uint8_t SCH_Add_Task(void (*pFunction)(void), uint32_t Delay, uint32_t Period){
  80018a4:	4b1a      	ldr	r3, [pc, #104]	; (8001910 <SCH_Add_Task+0xf4>)
  80018a6:	681b      	ldr	r3, [r3, #0]
  80018a8:	617b      	str	r3, [r7, #20]
-        while (current->next && current->next->task.Delay <= Delay){
+        while (current->next && current->next->task.Delay <= Delay){	//Kiểm tra vị trí sẽ đặt node mới, nếu Delay node mới < Delay Task tiếp theo thì đặt vào
  80018aa:	e008      	b.n	80018be <SCH_Add_Task+0xa2>
             Delay -= current->next->task.Delay;
  80018ac:	697b      	ldr	r3, [r7, #20]
@@ -3497,7 +3497,7 @@ uint8_t SCH_Add_Task(void (*pFunction)(void), uint32_t Delay, uint32_t Period){
  80018b8:	697b      	ldr	r3, [r7, #20]
  80018ba:	695b      	ldr	r3, [r3, #20]
  80018bc:	617b      	str	r3, [r7, #20]
-        while (current->next && current->next->task.Delay <= Delay){
+        while (current->next && current->next->task.Delay <= Delay){	//Kiểm tra vị trí sẽ đặt node mới, nếu Delay node mới < Delay Task tiếp theo thì đặt vào
  80018be:	697b      	ldr	r3, [r7, #20]
  80018c0:	695b      	ldr	r3, [r3, #20]
  80018c2:	2b00      	cmp	r3, #0
@@ -3553,7 +3553,7 @@ uint8_t SCH_Add_Task(void (*pFunction)(void), uint32_t Delay, uint32_t Period){
 
 08001914 <SCH_Update>:
 
-void SCH_Update(void){
+void SCH_Update(void){		//Thêm trong timer_interrupt
  8001914:	b480      	push	{r7}
  8001916:	af00      	add	r7, sp, #0
     if (SCH_Task_List && SCH_Task_List->task.Delay > 0){
@@ -3582,7 +3582,7 @@ void SCH_Update(void){
 
 08001940 <SCH_Dispatch_Tasks>:
 
-void SCH_Dispatch_Tasks(void) {
+void SCH_Dispatch_Tasks(void){			//Thực hiện trong while(1)
  8001940:	b580      	push	{r7, lr}
  8001942:	b082      	sub	sp, #8
  8001944:	af00      	add	r7, sp, #0
@@ -3603,17 +3603,17 @@ void SCH_Dispatch_Tasks(void) {
  8001956:	689b      	ldr	r3, [r3, #8]
  8001958:	2b00      	cmp	r3, #0
  800195a:	d014      	beq.n	8001986 <SCH_Dispatch_Tasks+0x46>
-            current->task.Delay = current->task.Period;
+            current->task.Delay = current->task.Period;		// Reset thời gian chờ
  800195c:	687b      	ldr	r3, [r7, #4]
  800195e:	689a      	ldr	r2, [r3, #8]
  8001960:	687b      	ldr	r3, [r7, #4]
  8001962:	605a      	str	r2, [r3, #4]
-            SCH_Task_List = current->next;
+            SCH_Task_List = current->next;					// Loại bỏ task khỏi đầu danh sách
  8001964:	687b      	ldr	r3, [r7, #4]
  8001966:	695b      	ldr	r3, [r3, #20]
  8001968:	4a11      	ldr	r2, [pc, #68]	; (80019b0 <SCH_Dispatch_Tasks+0x70>)
  800196a:	6013      	str	r3, [r2, #0]
-            SCH_Add_Task(current->task.pTask, current->task.Delay, current->task.Period);
+            SCH_Add_Task(current->task.pTask, current->task.Delay, current->task.Period);	//Thêm lại task vào danh sách
  800196c:	687b      	ldr	r3, [r7, #4]
  800196e:	6818      	ldr	r0, [r3, #0]
  8001970:	687b      	ldr	r3, [r7, #4]
@@ -3628,7 +3628,7 @@ void SCH_Dispatch_Tasks(void) {
  8001984:	e006      	b.n	8001994 <SCH_Dispatch_Tasks+0x54>
         }
         else{
-            SCH_Task_List = current->next;
+            SCH_Task_List = current->next;				//One-shot task => Xóa task
  8001986:	687b      	ldr	r3, [r7, #4]
  8001988:	695b      	ldr	r3, [r3, #20]
  800198a:	4a09      	ldr	r2, [pc, #36]	; (80019b0 <SCH_Dispatch_Tasks+0x70>)
