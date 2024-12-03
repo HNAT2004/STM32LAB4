@@ -22,20 +22,17 @@ unsigned char Error_code_G = 0;
 TaskNode* SCH_Task_List = NULL;
 uint32_t Current_Task_ID = 1;
 
-void SCH_Init(void) {
+void SCH_Init(void){
     SCH_Task_List = NULL;
     Current_Task_ID = 1;
 }
 
-uint8_t SCH_Add_Task(void (*pFunction)(void), uint32_t Delay, uint32_t Period) {
-    if (!pFunction) {
+uint8_t SCH_Add_Task(void (*pFunction)(void), uint32_t Delay, uint32_t Period){	//Thêm trước khi vào while(1)
+    if (!pFunction){
         return RETURN_ERROR;
     }
 
     TaskNode* newNode = (TaskNode*)malloc(sizeof(TaskNode));
-    if (!newNode) {
-        return RETURN_ERROR;
-    }
 
     newNode->task.pTask = pFunction;
     newNode->task.Delay = Delay;
@@ -44,19 +41,20 @@ uint8_t SCH_Add_Task(void (*pFunction)(void), uint32_t Delay, uint32_t Period) {
     newNode->task.TaskID = Current_Task_ID++;
     newNode->next = NULL;
 
-    if (!SCH_Task_List || SCH_Task_List->task.Delay > Delay) {
-        if (SCH_Task_List) {
+    if (!SCH_Task_List || SCH_Task_List->task.Delay > Delay){
+        if (SCH_Task_List){
             SCH_Task_List->task.Delay -= Delay;
         }
         newNode->next = SCH_Task_List;
-        SCH_Task_List = newNode;
-    } else {
+        SCH_Task_List = newNode;		//Trường hợp node mới được thêm vào đầu danh sách
+    }
+    else{
         TaskNode* current = SCH_Task_List;
-        while (current->next && current->next->task.Delay <= Delay) {
+        while (current->next && current->next->task.Delay <= Delay){	//Kiểm tra vị trí sẽ đặt node mới, nếu Delay node mới < Delay Task tiếp theo thì đặt vào
             Delay -= current->next->task.Delay;
             current = current->next;
         }
-        if (current->next) {
+        if (current->next){
             current->next->task.Delay -= Delay;
         }
         newNode->task.Delay = Delay;
@@ -67,32 +65,33 @@ uint8_t SCH_Add_Task(void (*pFunction)(void), uint32_t Delay, uint32_t Period) {
     return newNode->task.TaskID;
 }
 
-void SCH_Update(void) {
-    if (SCH_Task_List && SCH_Task_List->task.Delay > 0) {
+void SCH_Update(void){		//Thêm trong timer_interrupt
+    if (SCH_Task_List && SCH_Task_List->task.Delay > 0){
         SCH_Task_List->task.Delay--;
     }
 }
 
-void SCH_Dispatch_Tasks(void) {
-    while (SCH_Task_List && SCH_Task_List->task.Delay == 0) {
+void SCH_Dispatch_Tasks(void){			//Thực hiện trong while(1)
+    while (SCH_Task_List && SCH_Task_List->task.Delay == 0){
         TaskNode* current = SCH_Task_List;
 
         current->task.pTask();
 
-        if (current->task.Period > 0) {
-            current->task.Delay = current->task.Period;
-            SCH_Task_List = current->next;
-            SCH_Add_Task(current->task.pTask, current->task.Delay, current->task.Period);
+        if (current->task.Period > 0){
+            current->task.Delay = current->task.Period;		// Reset thời gian chờ
+            SCH_Task_List = current->next;					// Loại bỏ task khỏi đầu danh sách
+            SCH_Add_Task(current->task.pTask, current->task.Delay, current->task.Period);	//Thêm lại task vào danh sách
             free(current);
-        } else {
-            SCH_Task_List = current->next;
+        }
+        else{
+            SCH_Task_List = current->next;				//One-shot task => Xóa task
             free(current);
         }
     }
 }
 
-uint8_t SCH_Delete_Task(uint32_t TaskID) {
-    if (!SCH_Task_List) {
+uint8_t SCH_Delete_Task(uint32_t TaskID){
+    if (!SCH_Task_List){
         return RETURN_ERROR;
     }
 
@@ -100,16 +99,17 @@ uint8_t SCH_Delete_Task(uint32_t TaskID) {
     TaskNode* previous = NULL;
 
     while (current) {
-        if (current->task.TaskID == TaskID) {
-            if (!previous) {
+        if (current->task.TaskID == TaskID){			//Kiểm tra task hiện tại có TaskID trùng với ID cần xóa
+            if (!previous){								//Nếu previous là NULL => current đang trỏ đến node đầu tiên trong danh sách.
                 SCH_Task_List = current->next;
-            } else {
-                if (current->next) {
-                    current->next->task.Delay += current->task.Delay;
+            }
+            else{
+                if (current->next){
+                    current->next->task.Delay += current->task.Delay;	//Nếu có task đứng sau, cộng Delay của task bị xóa vào Delay của task tiếp theo.
                 }
                 previous->next = current->next;
             }
-            free(current);
+            free(current);							//Free bộ nhớ
             return RETURN_NORMAL;
         }
         previous = current;
